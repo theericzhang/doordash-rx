@@ -22,6 +22,7 @@ export type TRestaurantDataPrimary = {
     deliveryTime: string;
     pickupTime: string;
     isDashPass: boolean;
+    isSpecialDelivery?: boolean;
 };
 
 export type TStorefrontData = {

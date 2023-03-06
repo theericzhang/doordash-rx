@@ -819,7 +819,7 @@ export const restaurantList = {
             deliveryTime: '15 min',
             pickupTime: '21 min',
             isDashPass: true,
-            isDeliveryReady: true,
+            isSpecialDelivery: true,
         },
         storefrontData: {
             shortDescription: 'Prescription Delivery',

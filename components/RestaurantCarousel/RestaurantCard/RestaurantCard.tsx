@@ -112,7 +112,7 @@ export default function RestaurantCard({ restaurantID, restaurantData, index } :
                             decoding={index < 3 ? 'async' : 'sync'}
                             onLoadingComplete={() => { setIsImageLoading(false); }}
                         />
-                        <BadgeBanner />
+                        {restaurantData.isSpecialDelivery ? <BadgeBanner /> : null}
                     </RestaurantCardImageWrapper>
                     <RestaurantCardBottom>
                         <RestaurantCardText>
