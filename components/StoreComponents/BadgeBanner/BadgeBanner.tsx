@@ -12,10 +12,18 @@ const BadgeBannerWrapper = styled.div`
     color: var(--primary-white);
 `;
 
+const BadgeBannerSpan = styled.span`
+    font-weight: 600;
+    font-size: 12px;
+`;
+
 export default function BadgeBanner() {
     return (
         <BadgeBannerWrapper>
             <CheckmarkIcon />
+            <BadgeBannerSpan>
+                Rx ready for delivery
+            </BadgeBannerSpan>
         </BadgeBannerWrapper>
     );
 }
