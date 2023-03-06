@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { TRestaurantDataPrimary } from '../../../global';
 import DashPassIcon from '../../Icons/DashPassIcon';
 import Shimmer from '../../Placeholders/Shimmer';
+import BadgeBanner from '../../StoreComponents/BadgeBanner/BadgeBanner';
 
 const RestaurantCardArticle = styled.article`
     min-width: 374px;
@@ -111,6 +112,7 @@ export default function RestaurantCard({ restaurantID, restaurantData, index } :
                             decoding={index < 3 ? 'async' : 'sync'}
                             onLoadingComplete={() => { setIsImageLoading(false); }}
                         />
+                        <BadgeBanner />
                     </RestaurantCardImageWrapper>
                     <RestaurantCardBottom>
                         <RestaurantCardText>

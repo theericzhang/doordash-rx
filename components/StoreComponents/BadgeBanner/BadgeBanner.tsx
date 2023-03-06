@@ -9,11 +9,15 @@ const BadgeBannerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--primary-white);
+    color: var(--primary-white); 
+    padding: 0 4px;
+    position: absolute;
+    bottom: 7px;
+    right: 6px;
 `;
 
 const BadgeBannerSpan = styled.span`
-    font-weight: 600;
+    font-weight: 500;
     font-size: 12px;
 `;
 
