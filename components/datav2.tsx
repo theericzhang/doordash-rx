@@ -808,9 +808,105 @@ export const restaurantList = {
             ],
         },
     },
+    1463256: {
+        restaurantData: {
+            restaurantName: 'CVS Pharmacy Prescriptions',
+            restaurantImage: {
+                src: '/images/BlueBottleCoffee.webp',
+                alt: 'Image from CVS Pharmacy',
+            },
+            distance: '0.6 mi',
+            deliveryTime: '15 min',
+            pickupTime: '21 min',
+            isDashPass: true,
+        },
+        storefrontData: {
+            shortDescription: 'Prescription Delivery',
+            averageRating: 4.9,
+            ratingCount: 448,
+            priceRating: 1,
+            operationHours: [
+                {
+                    openHour: 8,
+                    openMinute: 0,
+                    closeHour: 20,
+                    closeMinute: 30,
+                },
+            ],
+            items: [
+                {
+                    // itemID: 1,
+                    itemName: 'Lisinopril (Zestril) 10 mg',
+                    image: {
+                        src: '/images/986234892/Matcha.webp',
+                        alt: 'Matcha',
+                    },
+                    price: 2,
+                    description: 'Made with matcha tea from the Uji tea fields in Kyoto prefecture, this umami-rich, bright green tea is lightly sweetened and served with your choice of steamed milk.',
+                    ratingPercentage: 100,
+                    ratingCount: 6,
+                },
+                {
+                    // itemID: 2,
+                    itemName: 'Overnight Oats',
+                    image: {
+                        src: '/images/986234892/OvernightOats.webp',
+                        alt: 'Overnight Oats',
+                    },
+                    price: 6.5,
+                    lastOrdered: '10/16/22',
+                    description:
+                    'Dried blueberries, sour cherries, oat milk, pomegranate molasses, and oats come together in this wholesome breakfast or snack.',
+                    ratingPercentage: 80,
+                    ratingCount: 10,
+                },
+                {
+                    // itemID: 3,
+                    itemName: 'Poundcake',
+                    image: {
+                        src: '/images/986234892/PoundCake.webp',
+                        alt: 'Poundcake',
+                    },
+                    price: 5.25,
+                    description: 'Our local bakery partners create a seasonal poundcake specific to each market.',
+                    ratingPercentage: 95,
+                    ratingCount: 82,
+                },
+                {
+                    // itemID: 4,
+                    itemName: 'New Orleans-style Iced Coffee',
+                    image: {
+                        src: '/images/986234892/NewOrleansIcedCoffee.webp',
+                        alt: 'New Orleans-style Iced Coffee',
+                    },
+                    price: 6.5,
+                    lastOrdered: '10/16/22',
+                    description: 'New Orleans-style Iced Coffee is a sweet, creamy, decadent iced coffee that’s cold-brewed with roasted chicory, then cut with your choice of milk and cane sugar.',
+                    ratingPercentage: 100,
+                    ratingCount: 34,
+                },
+                {
+                    // itemID: 4,
+                    itemName: 'Caffè Latte',
+                    image: {
+                        src: '/images/986234892/CaffeLatte.webp',
+                        alt: 'Caffè Latte',
+                    },
+                    price: 6,
+                    description: 'One of our most popular drinks, our latte turns our assertive, chocolaty, organic Hayes Valley Espresso velvety-sweet with a long pour of densely steamed milk.',
+                    ratingPercentage: 96,
+                    ratingCount: 50,
+                },
+            ],
+        },
+    }
 };
 
 export const restaurantCarousels = [
+    {
+        carouselName: 'DoorDash Rx',
+        selectedRestaurantIDs: [1463256],
+    },
     {
         carouselName: 'Now on Doordash',
         selectedRestaurantIDs: [65341, 986234892, 12356667, 18764431, 1243431, 120985],
