@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "lint": "next lint"
   },
   "dependencies": {
     "@next/font": "^13.1.1",
@@ -29,14 +27,6 @@
     "@babel/core": "^7.21.0",
     "@mdx-js/react": "^1.6.22",
     "@next/eslint-plugin-next": "^13.1.5",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/manager-webpack4": "^6.5.16",
-    "@storybook/react": "^6.5.16",
-    "@storybook/testing-library": "^0.0.13",
     "@types/node": "18.14.6",
     "@types/react-transition-group": "^4.4.5",
     "@types/styled-components": "^5.1.26",

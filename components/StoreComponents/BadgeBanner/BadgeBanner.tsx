@@ -8,6 +8,7 @@ const BadgeBannerWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--primary-white);
 `;
 
 export default function BadgeBanner() {
