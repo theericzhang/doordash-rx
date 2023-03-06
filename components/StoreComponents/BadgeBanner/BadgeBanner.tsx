@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CheckmarkIcon from '../../Icons/CheckmarkIcon';
 
 const BadgeBannerWrapper = styled.div`
     height: 20px;
@@ -14,7 +15,7 @@ const BadgeBannerWrapper = styled.div`
 export default function BadgeBanner() {
     return (
         <BadgeBannerWrapper>
-            Hi
+            <CheckmarkIcon />
         </BadgeBannerWrapper>
     );
 }
