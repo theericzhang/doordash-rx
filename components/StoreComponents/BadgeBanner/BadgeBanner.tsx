@@ -14,6 +14,7 @@ const BadgeBannerWrapper = styled.div`
     position: absolute;
     bottom: 7px;
     right: 6px;
+    column-gap: 3px;
 `;
 
 const BadgeBannerSpan = styled.span`
