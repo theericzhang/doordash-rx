@@ -320,6 +320,7 @@ export default function HeroComponent({ restaurantData, storefrontData }: TResta
                     <AuxOptions
                         deliveryTime={restaurantData.deliveryTime}
                         pickupTime={restaurantData.pickupTime}
+                        isSpecialDelivery={restaurantData?.isSpecialDelivery}
                     />
                 </HeroComponentInformationQuaternary>
             </HeroComponentInformation>

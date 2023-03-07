@@ -166,9 +166,10 @@ const AuxOptionsToggleLabelStationary = styled.span`
 type TAuxOptions = {
     deliveryTime: string;
     pickupTime: string;
+    isSpecialDelivery?: boolean;
 };
 
-export default function AuxOptions({ deliveryTime, pickupTime }: TAuxOptions) {
+export default function AuxOptions({ deliveryTime, pickupTime, isSpecialDelivery }: TAuxOptions) {
     const isDelivery = useAppSelector((state) => state.deliverySlice.isDelivery);
     const dispatch = useAppDispatch();
 
@@ -178,52 +179,56 @@ export default function AuxOptions({ deliveryTime, pickupTime }: TAuxOptions) {
                 <Heart />
                 <AuxOptionsButtonLabel>Save</AuxOptionsButtonLabel>
             </AuxOptionsButtonPrimary>
-            <AuxOptionsButtonPrimary>
-                <GroupOfPeople />
-                <AuxOptionsButtonLabel>
-                    Group Order
-                </AuxOptionsButtonLabel>
-            </AuxOptionsButtonPrimary>
-            <AuxOptionsToggleWrapper
-                onClick={() => {
-                    dispatch(toggleDeliveryState());
-                }}
-                aria-label="Selected delivery option"
-                role="switch"
-                aria-checked={isDelivery ? 'true' : 'false'}
-            >
-                <AuxOptionsToggleSlider
-                    isDelivery={isDelivery}
-                    onClick={(e) => e.stopPropagation()}
-                    role="none"
-                >
-                    <AuxOptionsToggleLabelWrapper>
-                        <AuxOptionsToggleLabel>
-                            {isDelivery ? 'Delivery' : 'Pickup'}
-                        </AuxOptionsToggleLabel>
-                        <AuxOptionsToggleLabelSmall>
-                            {isDelivery ? deliveryTime : pickupTime}
-                        </AuxOptionsToggleLabelSmall>
-                    </AuxOptionsToggleLabelWrapper>
-                </AuxOptionsToggleSlider>
-
-                <AuxOptionsToggleLabelWrapperStationaryLeft>
-                    <AuxOptionsToggleLabelStationary>
-                        Delivery
-                    </AuxOptionsToggleLabelStationary>
-                    <AuxOptionsToggleLabelSmallStationary>
-                        {deliveryTime}
-                    </AuxOptionsToggleLabelSmallStationary>
-                </AuxOptionsToggleLabelWrapperStationaryLeft>
-                <AuxOptionsToggleLabelWrapperStationaryRight>
-                    <AuxOptionsToggleLabelStationary>
-                        Pickup
-                    </AuxOptionsToggleLabelStationary>
-                    <AuxOptionsToggleLabelSmallStationary>
-                        {pickupTime}
-                    </AuxOptionsToggleLabelSmallStationary>
-                </AuxOptionsToggleLabelWrapperStationaryRight>
-            </AuxOptionsToggleWrapper>
+            {isSpecialDelivery ?
+                null
+                :
+                <>
+                    <AuxOptionsButtonPrimary>
+                        <GroupOfPeople />
+                        <AuxOptionsButtonLabel>
+                            Group Order
+                        </AuxOptionsButtonLabel>
+                    </AuxOptionsButtonPrimary>
+                    <AuxOptionsToggleWrapper
+                        onClick={() => {
+                            dispatch(toggleDeliveryState());
+                        }}
+                        aria-label="Selected delivery option"
+                        role="switch"
+                        aria-checked={isDelivery ? 'true' : 'false'}
+                    >
+                        <AuxOptionsToggleSlider
+                            isDelivery={isDelivery}
+                            onClick={(e) => e.stopPropagation()}
+                            role="none"
+                        >
+                            <AuxOptionsToggleLabelWrapper>
+                                <AuxOptionsToggleLabel>
+                                    {isDelivery ? 'Delivery' : 'Pickup'}
+                                </AuxOptionsToggleLabel>
+                                <AuxOptionsToggleLabelSmall>
+                                    {isDelivery ? deliveryTime : pickupTime}
+                                </AuxOptionsToggleLabelSmall>
+                            </AuxOptionsToggleLabelWrapper>
+                        </AuxOptionsToggleSlider>
+                        <AuxOptionsToggleLabelWrapperStationaryLeft>
+                            <AuxOptionsToggleLabelStationary>
+                                Delivery
+                            </AuxOptionsToggleLabelStationary>
+                            <AuxOptionsToggleLabelSmallStationary>
+                                {deliveryTime}
+                            </AuxOptionsToggleLabelSmallStationary>
+                        </AuxOptionsToggleLabelWrapperStationaryLeft>
+                        <AuxOptionsToggleLabelWrapperStationaryRight>
+                            <AuxOptionsToggleLabelStationary>
+                                Pickup
+                            </AuxOptionsToggleLabelStationary>
+                            <AuxOptionsToggleLabelSmallStationary>
+                                {pickupTime}
+                            </AuxOptionsToggleLabelSmallStationary>
+                        </AuxOptionsToggleLabelWrapperStationaryRight>
+                    </AuxOptionsToggleWrapper>
+                </>}
         </AuxOptionsWrapper>
     );
 }
