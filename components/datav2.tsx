@@ -812,7 +812,7 @@ export const restaurantList = {
         restaurantData: {
             restaurantName: 'CVS Pharmacy Prescriptions',
             restaurantImage: {
-                src: '/images/BlueBottleCoffee.webp',
+                src: '/images/CVSPharmacy.webp',
                 alt: 'Image from CVS Pharmacy',
             },
             distance: '0.6 mi',
