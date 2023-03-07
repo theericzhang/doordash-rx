@@ -26,6 +26,7 @@ export type TRestaurantDataPrimary = {
 };
 
 export type TStorefrontData = {
+    isSpecialDelivery?: boolean;
     shortDescription?: string;
     averageRating?: number;
     ratingCount?: number;

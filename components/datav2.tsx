@@ -822,6 +822,7 @@ export const restaurantList = {
             isSpecialDelivery: true,
         },
         storefrontData: {
+            isSpecialDelivery: true,
             shortDescription: 'Prescription Delivery',
             averageRating: 4.9,
             ratingCount: 448,
