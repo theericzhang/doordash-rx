@@ -9,6 +9,7 @@ import ClockIcon from '../../Icons/ClockIcon';
 import Information from '../../Icons/InformationIcon';
 import AuxOptions from './AuxOptions/AuxOptions';
 import Shimmer from '../../Placeholders/Shimmer';
+import LinkedAccount from './LinkedAccount/LinkedAccount';
 
 const HeroComponentWrapper = styled.section`
     display: flex;
@@ -324,6 +325,7 @@ export default function HeroComponent({ restaurantData, storefrontData }: TResta
                     />
                 </HeroComponentInformationQuaternary>
             </HeroComponentInformation>
+            {restaurantData?.isSpecialDelivery ? <LinkedAccount storeProfileSrc={restaurantData.restaurantImage.src} storeProfileAlt={restaurantData.restaurantImage.src} /> : null}
         </HeroComponentWrapper>
     );
 }
