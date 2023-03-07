@@ -6,11 +6,19 @@ const LinkedAccountWrapper = styled.div`
     align-items: center;
 `;
 
-const LinkedAccountStoreProfile = styled.div`
+const LinkedAccountStoreProfileWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
+    height: 46px;
+    width: 46px;
+    border-radius: 50%
+`;
+
+const LinkedAccountStoreProfileImage = styled(Image)`
+    object-fit: cover;
 `;
 
 type TLinkedAccount = {
@@ -21,12 +29,14 @@ type TLinkedAccount = {
 export default function LinkedAccount({ storeProfileSrc, storeProfileAlt }: TLinkedAccount) {
     return (
         <LinkedAccountWrapper>
-            <LinkedAccountStoreProfile>
-                <Image
+            <LinkedAccountStoreProfileWrapper>
+                <LinkedAccountStoreProfileImage
                     src={storeProfileSrc}
                     alt={storeProfileAlt}
+                    fill
+                    sizes="(max-width: 960px) 76px, 76px"
                 />
-            </LinkedAccountStoreProfile>
+            </LinkedAccountStoreProfileWrapper>
         </LinkedAccountWrapper>
     );
 }
