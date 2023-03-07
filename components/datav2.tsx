@@ -824,7 +824,7 @@ export const restaurantList = {
         storefrontData: {
             isSpecialDelivery: true,
             shortDescription: 'Prescription Delivery',
-            averageRating: 4.9,
+            averageRating: 4.6,
             ratingCount: 448,
             priceRating: 1,
             operationHours: [
