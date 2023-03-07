@@ -21,6 +21,11 @@ const LinkedAccountStoreProfileImage = styled(Image)`
     object-fit: cover;
 `;
 
+const LinkedAccountLabel = styled.span`
+    font-size: 14px;
+    color: var(--secondary-black);
+`;
+
 type TLinkedAccount = {
     storeProfileSrc: string;
     storeProfileAlt: string;
@@ -37,6 +42,9 @@ export default function LinkedAccount({ storeProfileSrc, storeProfileAlt }: TLin
                     sizes="(max-width: 960px) 76px, 76px"
                 />
             </LinkedAccountStoreProfileWrapper>
+            <LinkedAccountLabel>
+                Linked account:
+            </LinkedAccountLabel>
         </LinkedAccountWrapper>
     );
 }
