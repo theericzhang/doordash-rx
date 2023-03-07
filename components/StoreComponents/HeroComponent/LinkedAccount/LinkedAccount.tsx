@@ -4,6 +4,7 @@ import Image from 'next/image';
 const LinkedAccountWrapper = styled.div`
     display: flex;
     align-items: center;
+    column-gap: 12px;
 `;
 
 const LinkedAccountStoreProfileWrapper = styled.div`
@@ -24,6 +25,22 @@ const LinkedAccountStoreProfileImage = styled(Image)`
 const LinkedAccountLabel = styled.span`
     font-size: 14px;
     color: var(--secondary-black);
+    display: flex;
+    column-gap: 6px;
+`;
+
+const LinkedAccountLabelBolden = styled.span`
+    font-weight: 500;
+`;
+
+const LinkedAccountManageLink = styled.a`
+    font-size: 14px;
+    color: var(--primary-black);
+    text-decoration: underline;
+
+    &:visited {
+        color: inherit;
+    }
 `;
 
 type TLinkedAccount = {
@@ -44,7 +61,13 @@ export default function LinkedAccount({ storeProfileSrc, storeProfileAlt }: TLin
             </LinkedAccountStoreProfileWrapper>
             <LinkedAccountLabel>
                 Linked account:
+                <LinkedAccountLabelBolden>
+                    JaneSmith@mail.com
+                </LinkedAccountLabelBolden>
             </LinkedAccountLabel>
+            <LinkedAccountManageLink href="/">
+                Manage
+            </LinkedAccountManageLink>
         </LinkedAccountWrapper>
     );
 }
