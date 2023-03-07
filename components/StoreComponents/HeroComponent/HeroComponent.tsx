@@ -324,8 +324,8 @@ export default function HeroComponent({ restaurantData, storefrontData }: TResta
                         isSpecialDelivery={restaurantData?.isSpecialDelivery}
                     />
                 </HeroComponentInformationQuaternary>
+                {restaurantData?.isSpecialDelivery ? <LinkedAccount storeProfileSrc={restaurantData.restaurantImage.src} storeProfileAlt={restaurantData.restaurantImage.src} /> : null}
             </HeroComponentInformation>
-            {restaurantData?.isSpecialDelivery ? <LinkedAccount storeProfileSrc={restaurantData.restaurantImage.src} storeProfileAlt={restaurantData.restaurantImage.src} /> : null}
         </HeroComponentWrapper>
     );
 }
