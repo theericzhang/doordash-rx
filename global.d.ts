@@ -56,6 +56,7 @@ export type TStoreItem = {
     price: number;
     description?: string;
     lastOrdered?: string;
-    ratingPercentage: number;
-    ratingCount: number;
+    ratingPercentage?: number;
+    ratingCount?: number;
+    specialDeliveryStatus?: string;
 };

@@ -883,21 +883,20 @@ export const restaurantList = {
                             alt: 'Matcha',
                         },
                         price: 2,
-                        description: 'Made with matcha tea from the Uji tea fields in Kyoto prefecture, this umami-rich, bright green tea is lightly sweetened and served with your choice of steamed milk.',
+                        description: 'RX # 49102895 • Dr. Stern',
+                        specialDeliveryStatus: 'delivery-ready',
                     },
                     {
                     // itemID: 2,
-                        itemName: 'Overnight Oats',
+                        itemName: 'Vitamin D2 (Drisdol) 3mg',
                         image: {
                             src: '/images/986234892/OvernightOats.webp',
                             alt: 'Overnight Oats',
                         },
                         price: 6.5,
-                        lastOrdered: '10/16/22',
                         description:
-                    'Dried blueberries, sour cherries, oat milk, pomegranate molasses, and oats come together in this wholesome breakfast or snack.',
-                        ratingPercentage: 80,
-                        ratingCount: 10,
+                    'RX # 29301845 • Dr. Stern',
+                        specialDeliveryStatus: 'refill-ready',
                     },
                     {
                     // itemID: 3,
