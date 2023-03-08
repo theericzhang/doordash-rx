@@ -25,8 +25,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -107,8 +107,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -188,8 +188,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -299,8 +299,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -399,8 +399,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -514,8 +514,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -597,8 +597,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -679,8 +679,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -774,8 +774,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'Popular Items',
+                itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
                     // itemID: 1,
@@ -872,8 +872,8 @@ export const restaurantList = {
                 },
             ],
             items: {
-                itemsName: 'CategoryName',
-                itemsNameDesc: 'Description of Category',
+                itemsName: 'New: Request a Prescription Delivery',
+                itemsNameDesc: 'DoorDash can now deliver filled prescriptions to you.',
                 itemsList: [
                     {
                     // itemID: 1,

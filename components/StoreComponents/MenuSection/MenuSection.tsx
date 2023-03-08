@@ -89,10 +89,10 @@ export default function MenuSection() {
         <MenuSectionSection>
             <MenuSectionHeaderWrapper>
                 <MenuSectionHeader>
-                    Popular Items
+                    {restaurantMenu?.itemsName}
                 </MenuSectionHeader>
                 <MenuSectionSubheader>
-                    The most commonly ordered items and dishes from this store
+                    {restaurantMenu?.itemsNameDesc}
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
