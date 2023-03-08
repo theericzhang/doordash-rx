@@ -148,17 +148,19 @@ export default function MenuItem({
                 <ItemTextDescription>
                     {description}
                 </ItemTextDescription>
-                <ItemTextStatsWrapper>
-                    <ItemTextPrice>{priceFormatter.format(price)}</ItemTextPrice>
-                    <ItemTextStats>•</ItemTextStats>
-                    <ThumbsUp />
-                    <ItemTextStats>
-                        {ratingPercentage}
-                        % (
-                        {ratingCount}
-                        )
-                    </ItemTextStats>
-                </ItemTextStatsWrapper>
+                {ratingPercentage ?
+                    <ItemTextStatsWrapper>
+                        <ItemTextPrice>{priceFormatter.format(price)}</ItemTextPrice>
+                        <ItemTextStats>•</ItemTextStats>
+                        <ThumbsUp />
+                        <ItemTextStats>
+                            {ratingPercentage}
+                            % (
+                            {ratingCount}
+                            )
+                        </ItemTextStats>
+                    </ItemTextStatsWrapper>
+                    : null}
                 <ItemTextLastOrdered>
                     {lastOrdered ? `Last ordered on ${lastOrdered}` : null}
                 </ItemTextLastOrdered>

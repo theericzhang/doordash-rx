@@ -884,8 +884,6 @@ export const restaurantList = {
                         },
                         price: 2,
                         description: 'Made with matcha tea from the Uji tea fields in Kyoto prefecture, this umami-rich, bright green tea is lightly sweetened and served with your choice of steamed milk.',
-                        ratingPercentage: 100,
-                        ratingCount: 6,
                     },
                     {
                     // itemID: 2,

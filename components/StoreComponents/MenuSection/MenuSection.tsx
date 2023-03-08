@@ -104,8 +104,8 @@ export default function MenuSection() {
                             itemName={item.itemName}
                             price={item.price}
                             description={item.description}
-                            ratingCount={item.ratingCount}
-                            ratingPercentage={item.ratingPercentage}
+                            ratingCount={item?.ratingCount}
+                            ratingPercentage={item?.ratingPercentage}
                             lastOrdered={item?.lastOrdered}
                         />
                         <MenuSectionItemsDivider />
