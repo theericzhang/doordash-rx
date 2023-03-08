@@ -5,6 +5,7 @@ const LinkedAccountWrapper = styled.div`
     display: flex;
     align-items: center;
     column-gap: 12px;
+    margin: 22px 0;
 `;
 
 const LinkedAccountStoreProfileWrapper = styled.div`
