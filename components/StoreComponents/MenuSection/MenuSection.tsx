@@ -80,7 +80,8 @@ const MenuSectionItemsDivider = styled.hr`
         border-bottom: 1px solid var(--primary-gray);
     }
 `;
-
+// TODO: Change MenuSectionHeader and Subheader to be dynamic.
+// TODO: Look into datav2 to see if you can generate a subsection for items, much like carousels? May need to nuke this idea for now
 export default function MenuSection() {
     const restaurantMenu = useContext(StoreItemsContext);
 
