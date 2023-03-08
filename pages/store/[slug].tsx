@@ -2,7 +2,9 @@ import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { createContext } from 'react';
 import { restaurantList } from '../../components/datav2';
-import { TRestaurantDataPrimary, TStorefrontData, TStoreItem } from '../../global';
+import {
+    TRestaurantDataPrimary, TStorefrontData, TStoreItemCategory
+} from '../../global';
 
 import StoreLayout from '../../components/Layouts/StoreLayout';
 import HeroComponent from '../../components/StoreComponents/HeroComponent/HeroComponent';
@@ -21,7 +23,7 @@ type TServerSideProps = {
     storeID: string;
 };
 
-export const StoreItemsContext = createContext<TStoreItem[] | null>(null);
+export const StoreItemsContext = createContext<TStoreItemCategory | null>(null);
 
 export default function Store({ restaurant, storeID }: TServerSideProps) {
     const dispatch = useAppDispatch();

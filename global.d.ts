@@ -37,7 +37,13 @@ export type TStorefrontData = {
         closeHour: number;
         closeMinute: number;
     }[];
-    items: TStoreItem[];
+    items: TStoreItemCategory;
+};
+
+export type TStoreItemCategory = {
+    itemsName: string;
+    itemsNameDesc: string;
+    itemsList: TStoreItem[];
 };
 
 export type TStoreItem = {

@@ -96,7 +96,7 @@ export default function MenuSection() {
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
-                {restaurantMenu?.map((item, index) => (
+                {restaurantMenu?.itemsList?.map((item, index) => (
                     <Fragment key={item.itemName}>
                         <MenuItem
                             itemID={index}
