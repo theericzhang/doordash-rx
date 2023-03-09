@@ -5,7 +5,18 @@ const BadgeBannerWrapper = styled.div<TBadgeBanner>`
     height: 20px;
     width: fit-content;
     border-radius: 4px;
-    background-color: var(--primary-green);
+    background-color: ${(props) => {
+        switch (props.specialDeliveryStatus) {
+        case 'delivery-ready':
+            return 'var(--primary-green)';
+        case 'refill-ready':
+            return 'var(--quinary-gray)';
+        case 'refill-requested':
+            return 'var(--secondary-gold)';
+        default:
+            break;
+        }
+    }};
     display: flex;
     justify-content: center;
     align-items: center;

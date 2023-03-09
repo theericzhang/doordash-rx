@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
         --primary-green: rgba(0, 135, 47, 1);
 
         --primary-gold: rgba(161, 108, 0, 1);
+        --secondary-gold: rgba(225, 163, 37, 1);
         
         /* System Font Family Variable */
         --primary-font-family: 'TTNorms';
