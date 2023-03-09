@@ -46,6 +46,22 @@ export type TStoreItemCategory = {
     itemsList: TStoreItem[];
 };
 
+export type TMedicationInformation = {
+    lastFilledDate: string;
+    quantity: number;
+    refills: number;
+    patientInformation: {
+        patientName: string;
+        patientAddress: string;
+        patientInsurance: {
+            insurer: string;
+            memberID: number;
+        };
+    };
+    instructions: string;
+    medicalImportantInformation: string[];
+};
+
 export type TStoreItem = {
     itemID: number;
     image: {
@@ -59,4 +75,5 @@ export type TStoreItem = {
     ratingPercentage?: number;
     ratingCount?: number;
     specialDeliveryStatus?: string;
+    medicationInformation?: TMedicationInformation;
 };

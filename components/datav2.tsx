@@ -885,6 +885,24 @@ export const restaurantList = {
                         price: 2,
                         description: 'RX # 49102895 • Dr. Stern',
                         specialDeliveryStatus: 'delivery-ready',
+                        medicationInformation: {
+                            lastFilledDate: '02/28/2023',
+                            quantity: 30,
+                            refills: 1,
+                            patientInformation: {
+                                patientName: 'Jane Smith',
+                                patientAddress: '123 Maple Drive, Appletown, NY 11111',
+                                patientInsurance: {
+                                    insurer: 'aetna',
+                                    memberID: 134642195,
+                                }
+                            },
+                            instructions: 'Take 1 tablet orally 2 times a day',
+                            medicalImportantInformation: [
+                                'Discontinue if pregnancy is detected',
+                                'Talk to your Dr. about potential drug interactions while taking this drug'
+                            ]
+                        }
                     },
                     {
                     // itemID: 2,
@@ -894,9 +912,25 @@ export const restaurantList = {
                             alt: 'Medication Icon',
                         },
                         price: 6.5,
-                        description:
-                    'RX # 29301845 • Dr. Stern',
+                        description: 'RX # 29301845 • Dr. Stern',
                         specialDeliveryStatus: 'refill-ready',
+                        medicationInformation: {
+                            lastFilledDate: '01/23/2023',
+                            quantity: 30,
+                            refills: 2,
+                            patientInformation: {
+                                patientName: 'Jane Smith',
+                                patientAddress: '123 Maple Drive, Appletown, NY 11111',
+                                patientInsurance: {
+                                    insurer: 'aetna',
+                                    memberID: 134642195,
+                                }
+                            },
+                            instructions: 'Take 1 tablet orally once a day',
+                            medicalImportantInformation: [
+                                'Talk to your Dr. about usage of this medication while nursing',
+                            ]
+                        }
                     },
                 ],
             }
