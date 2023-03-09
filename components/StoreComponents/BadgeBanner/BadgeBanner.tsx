@@ -27,6 +27,7 @@ type TBadgeBanner = {
 };
 
 export default function BadgeBanner({ specialDeliveryStatus }: TBadgeBanner) {
+    // TODO: conditionally render different styles for the badges, with background-color, CheckmarkIcon, and label name
     return (
         <BadgeBannerWrapper specialDeliveryStatus={specialDeliveryStatus}>
             <CheckmarkIcon />
