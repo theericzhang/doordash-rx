@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import ThumbsUp from '../../Icons/ThumbsUpIcon';
 import Shimmer from '../../Placeholders/Shimmer';
+import BadgeBanner from '../BadgeBanner/BadgeBanner';
 import { TStoreItem } from '../../../global';
 import { useAppDispatch } from '../../../app-redux/hooks';
 import { toggleIsModalOpen, setModalData } from '../../../app-redux/features/item/itemSlice';
@@ -166,7 +167,7 @@ export default function MenuItem({
                         {`Last ordered on ${lastOrdered}`}
                     </ItemTextLastOrdered>
                     : null}
-                {specialDeliveryStatus ? <p>{specialDeliveryStatus}</p> : null}
+                {specialDeliveryStatus ? <BadgeBanner specialDeliveryStatus={specialDeliveryStatus} /> : null}
             </ItemTextWrapper>
             <ItemImageWrapper>
                 {isImageLoading ? <Shimmer width={300} /> : null}
