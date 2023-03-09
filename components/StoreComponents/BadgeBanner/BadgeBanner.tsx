@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import CheckmarkIcon from '../../Icons/CheckmarkIcon';
+import RenewIcon from '../../Icons/RenewIcon';
 
 const BadgeBannerWrapper = styled.div<TBadgeBanner>`
     height: 20px;
@@ -40,25 +41,31 @@ type TBadgeBanner = {
 export default function BadgeBanner({ specialDeliveryStatus }: TBadgeBanner) {
     // TODO: conditionally render different styles for the badges, with background-color, CheckmarkIcon, and label name
     let badgeLabel = '';
+    let badgeIcon;
+
     switch (specialDeliveryStatus) {
     case 'delivery-ready':
         badgeLabel = 'Ready for delivery';
+        badgeIcon = <CheckmarkIcon />;
         break;
     case 'refill-ready':
         badgeLabel = 'Ready for refill';
+        badgeIcon = <RenewIcon />;
         break;
     case 'refill-requested':
         badgeLabel = 'Refill requested';
+        badgeIcon = <RenewIcon />;
         break;
     default:
         // Rx ready for delivery should be reserved for Home-page view only. Consider creating a special prop for this component to handle badgeLabel coming from home page
         badgeLabel = 'Rx ready for delivery';
+        badgeIcon = <CheckmarkIcon />;
         break;
     }
 
     return (
         <BadgeBannerWrapper specialDeliveryStatus={specialDeliveryStatus}>
-            <CheckmarkIcon />
+            {badgeIcon}
             <BadgeBannerSpan>
                 {badgeLabel}
             </BadgeBannerSpan>
