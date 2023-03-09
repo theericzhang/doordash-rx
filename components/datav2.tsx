@@ -879,7 +879,7 @@ export const restaurantList = {
                     // itemID: 1,
                         itemName: 'Lisinopril (Zestril) 10 mg',
                         image: {
-                            src: '/images/986234892/Matcha.webp',
+                            src: '/images/1463256/MedicationIcon.webp',
                             alt: 'Medication Icon',
                         },
                         price: 2,
@@ -890,7 +890,7 @@ export const restaurantList = {
                     // itemID: 2,
                         itemName: 'Vitamin D2 (Drisdol) 3mg',
                         image: {
-                            src: '/images/986234892/OvernightOats.webp',
+                            src: '/images/1463256/MedicationIcon.webp',
                             alt: 'Medication Icon',
                         },
                         price: 6.5,
