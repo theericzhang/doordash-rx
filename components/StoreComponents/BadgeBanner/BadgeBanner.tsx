@@ -14,7 +14,7 @@ const BadgeBannerWrapper = styled.div<TBadgeBanner>`
         case 'refill-requested':
             return 'var(--secondary-gold)';
         default:
-            break;
+            return 'var(--primary-green)';
         }
     }};
     display: flex;
@@ -39,11 +39,28 @@ type TBadgeBanner = {
 
 export default function BadgeBanner({ specialDeliveryStatus }: TBadgeBanner) {
     // TODO: conditionally render different styles for the badges, with background-color, CheckmarkIcon, and label name
+    let badgeLabel = '';
+    switch (specialDeliveryStatus) {
+    case 'delivery-ready':
+        badgeLabel = 'Ready for delivery';
+        break;
+    case 'refill-ready':
+        badgeLabel = 'Ready for refill';
+        break;
+    case 'refill-requested':
+        badgeLabel = 'Refill requested';
+        break;
+    default:
+        // Rx ready for delivery should be reserved for Home-page view only. Consider creating a special prop for this component to handle badgeLabel coming from home page
+        badgeLabel = 'Rx ready for delivery';
+        break;
+    }
+
     return (
         <BadgeBannerWrapper specialDeliveryStatus={specialDeliveryStatus}>
             <CheckmarkIcon />
             <BadgeBannerSpan>
-                Rx ready for delivery
+                {badgeLabel}
             </BadgeBannerSpan>
         </BadgeBannerWrapper>
     );
