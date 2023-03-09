@@ -898,43 +898,6 @@ export const restaurantList = {
                     'RX # 29301845 • Dr. Stern',
                         specialDeliveryStatus: 'refill-ready',
                     },
-                    {
-                    // itemID: 3,
-                        itemName: 'Poundcake',
-                        image: {
-                            src: '/images/986234892/PoundCake.webp',
-                            alt: 'Poundcake',
-                        },
-                        price: 5.25,
-                        description: 'Our local bakery partners create a seasonal poundcake specific to each market.',
-                        ratingPercentage: 95,
-                        ratingCount: 82,
-                    },
-                    {
-                    // itemID: 4,
-                        itemName: 'New Orleans-style Iced Coffee',
-                        image: {
-                            src: '/images/986234892/NewOrleansIcedCoffee.webp',
-                            alt: 'New Orleans-style Iced Coffee',
-                        },
-                        price: 6.5,
-                        lastOrdered: '10/16/22',
-                        description: 'New Orleans-style Iced Coffee is a sweet, creamy, decadent iced coffee that’s cold-brewed with roasted chicory, then cut with your choice of milk and cane sugar.',
-                        ratingPercentage: 100,
-                        ratingCount: 34,
-                    },
-                    {
-                    // itemID: 4,
-                        itemName: 'Caffè Latte',
-                        image: {
-                            src: '/images/986234892/CaffeLatte.webp',
-                            alt: 'Caffè Latte',
-                        },
-                        price: 6,
-                        description: 'One of our most popular drinks, our latte turns our assertive, chocolaty, organic Hayes Valley Espresso velvety-sweet with a long pour of densely steamed milk.',
-                        ratingPercentage: 96,
-                        ratingCount: 50,
-                    },
                 ],
             }
         },
