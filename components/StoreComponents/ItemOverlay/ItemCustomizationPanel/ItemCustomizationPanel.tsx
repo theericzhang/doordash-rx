@@ -263,7 +263,11 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 {itemData?.itemName}
                             </ItemCustomizationPanelItemName>
                             {itemData?.specialDeliveryStatus ?
-                                <MedicalItemDetails medicationInformation={itemData?.medicationInformation} />
+                                <MedicalItemDetails
+                                    primaryDescription={itemData.description}
+                                    medicationInformation={itemData.medicationInformation}
+                                    specialDeliveryStatus={itemData.specialDeliveryStatus}
+                                />
                                 :
                                 <>
                                     {itemData?.ratingCount ? (

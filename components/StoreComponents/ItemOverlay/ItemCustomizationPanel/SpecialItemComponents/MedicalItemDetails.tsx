@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { TMedicationInformation } from '../../../../../global';
+import BadgeBanner from '../../../BadgeBanner/BadgeBanner';
 
 const ItemCustomizationPanelItemDescriptionSpecial = styled.span`
     font-size: 14px;
@@ -9,16 +10,24 @@ const ItemCustomizationPanelItemDescriptionSpecial = styled.span`
 `;
 
 type TMedicalItemDetails = {
+    primaryDescription?: string;
     medicationInformation?: TMedicationInformation;
+    specialDeliveryStatus: string;
 };
 
-export default function MedicalItemDetails({ medicationInformation }: TMedicalItemDetails) {
+export default function MedicalItemDetails({ primaryDescription, medicationInformation, specialDeliveryStatus }: TMedicalItemDetails) {
     return (
-        <ItemCustomizationPanelItemDescriptionSpecial>
-            Last Filled:
-            {' '}
-            {medicationInformation?.lastFilledDate}
-        </ItemCustomizationPanelItemDescriptionSpecial>
+        <>
+            <ItemCustomizationPanelItemDescriptionSpecial>
+                {primaryDescription}
+            </ItemCustomizationPanelItemDescriptionSpecial>
+            <ItemCustomizationPanelItemDescriptionSpecial>
+                Last Filled:
+                {' '}
+                {medicationInformation?.lastFilledDate}
+            </ItemCustomizationPanelItemDescriptionSpecial>
+            <BadgeBanner specialDeliveryStatus={specialDeliveryStatus} />
 
+        </>
     );
 }
