@@ -108,6 +108,7 @@ export default function MenuSection() {
                             ratingPercentage={item?.ratingPercentage}
                             lastOrdered={item?.lastOrdered}
                             specialDeliveryStatus={item?.specialDeliveryStatus}
+                            medicationInformation={item?.medicationInformation}
                         />
                         <MenuSectionItemsDivider />
                     </Fragment>

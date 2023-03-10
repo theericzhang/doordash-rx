@@ -20,6 +20,7 @@ import {
 import X from '../../../Icons/XIcon';
 import ThumbsUp from '../../../Icons/ThumbsUpIcon';
 import ModalInputStepper from './ModalInputStepper/ModalInputStepper';
+import MedicalItemDetails from './SpecialItemComponents/MedicalItemDetails';
 
 type TItemCustomizationPanel = {
     state: TransitionStatus;
@@ -261,34 +262,40 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                             <ItemCustomizationPanelItemName>
                                 {itemData?.itemName}
                             </ItemCustomizationPanelItemName>
-                            {itemData?.ratingCount ? (
-                                <ItemCustomizationPanelStatsWrapper>
-                                    <ThumbsUp size={16} />
-                                    <ItemCustomizationPanelStats>
-                                        {itemData.ratingPercentage}
-                                        % (
-                                        {itemData.ratingCount}
-                                        )
-                                    </ItemCustomizationPanelStats>
-                                </ItemCustomizationPanelStatsWrapper>
-                            ) : null}
-                            {itemData?.description ? (
-                                <ItemCustomizationPanelItemDescription>
-                                    {itemData?.description}
-                                </ItemCustomizationPanelItemDescription>
-                            ) : null}
-                            {itemData?.image.src ? (
-                                <ItemCustomizationPanelImageWrapper>
-                                    {isImageLoading ? <Shimmer width={600} /> : null}
-                                    <ItemCustomizationPanelImage
-                                        src={itemData.image.src}
-                                        alt={itemData.image.alt}
-                                        sizes="295px"
-                                        fill
-                                        onLoadingComplete={() => setIsImageLoading(false)}
-                                    />
-                                </ItemCustomizationPanelImageWrapper>
-                            ) : null}
+                            {itemData?.specialDeliveryStatus ?
+                                <MedicalItemDetails medicationInformation={itemData?.medicationInformation} />
+                                :
+                                <>
+                                    {itemData?.ratingCount ? (
+                                        <ItemCustomizationPanelStatsWrapper>
+                                            <ThumbsUp size={16} />
+                                            <ItemCustomizationPanelStats>
+                                                {itemData.ratingPercentage}
+                                                % (
+                                                {itemData.ratingCount}
+                                                )
+                                            </ItemCustomizationPanelStats>
+                                        </ItemCustomizationPanelStatsWrapper>
+                                    ) : null}
+                                    {itemData?.description ? (
+                                        <ItemCustomizationPanelItemDescription>
+                                            {itemData?.description}
+                                        </ItemCustomizationPanelItemDescription>
+                                    ) : null}
+                                    {itemData?.image.src ? (
+                                        <ItemCustomizationPanelImageWrapper>
+                                            {isImageLoading ? <Shimmer width={600} /> : null}
+                                            <ItemCustomizationPanelImage
+                                                src={itemData.image.src}
+                                                alt={itemData.image.alt}
+                                                sizes="295px"
+                                                fill
+                                                onLoadingComplete={() => setIsImageLoading(false)}
+                                            />
+                                        </ItemCustomizationPanelImageWrapper>
+                                    ) : null}
+
+                                </>}
                         </ItemCustomizationPanelContentWrapper>
                     </ItemCustomizationPanelMainWrapper>
                     <ItemCustomizationPanelFooter>

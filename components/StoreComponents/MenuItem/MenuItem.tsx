@@ -122,7 +122,7 @@ const ItemImage = styled(Image)`
 `;
 
 export default function MenuItem({
-    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus
+    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
 }: TStoreItem) {
     const dispatch = useAppDispatch();
     const priceFormatter = new Intl.NumberFormat('en-US', {
@@ -141,7 +141,7 @@ export default function MenuItem({
                     // TODO: if specialDeliveryStatus exists -> dis(setMD(itemID,itemName,price,desc,medicationInformation,specialDeliveryStatus))
                     // TODO: else ->
                     dispatch(setModalData({
-                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered
+                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
                     }));
                 }
             }
