@@ -38,7 +38,7 @@ function calculateCartTotal() {
         sum +=
             item.quantity *
             restaurants[initialState.storeID as keyof typeof restaurants]
-                .storefrontData.items[item.itemID].price;
+                .storefrontData.items.itemsList[item.itemID].price;
     });
     return sum;
 }
@@ -51,7 +51,7 @@ function immutableCalculateCartTotal(state: ICartState) {
         sum +=
             item.quantity *
             restaurants[state.storeID as keyof typeof restaurants]
-                .storefrontData.items[item.itemID].price;
+                .storefrontData.items.itemsList[item.itemID].price;
     });
     state.totalValue = sum;
 }
