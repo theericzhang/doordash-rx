@@ -138,6 +138,8 @@ export default function MenuItem({
             onClick={
                 () => {
                     dispatch(toggleIsModalOpen());
+                    // TODO: if specialDeliveryStatus exists -> dis(setMD(itemID,itemName,price,desc,medicationInformation,specialDeliveryStatus))
+                    // TODO: else ->
                     dispatch(setModalData({
                         itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered
                     }));
