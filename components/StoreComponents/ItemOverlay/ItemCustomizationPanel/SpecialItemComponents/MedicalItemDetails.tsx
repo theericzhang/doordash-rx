@@ -21,6 +21,15 @@ const MedicalItemDetailsSpanGroup = styled.div`
     column-gap: 18px;
 `;
 
+const MedicalItemDetailsLabel = styled.section`
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    background-color: var(--secondary-gray);
+    width: 100%;
+    padding: 16px;
+`;
+
 type TMedicalItemDetails = {
     primaryDescription?: string;
     medicationInformation?: TMedicationInformation;
@@ -53,6 +62,9 @@ export default function MedicalItemDetails({ primaryDescription, medicationInfor
                 </MedicalItemDetailsSpanGroup>
             </MedicalItemDetailsSpanWrapper>
             <BadgeBanner specialDeliveryStatus={specialDeliveryStatus} />
+            <MedicalItemDetailsLabel>
+                HI
+            </MedicalItemDetailsLabel>
 
         </>
     );
