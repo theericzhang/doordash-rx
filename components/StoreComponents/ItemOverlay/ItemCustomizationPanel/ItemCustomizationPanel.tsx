@@ -302,6 +302,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 </>}
                         </ItemCustomizationPanelContentWrapper>
                     </ItemCustomizationPanelMainWrapper>
+                    {/* // TODO: Footer needs to be variable - add different buttons like request refill, and have insurance information */}
                     <ItemCustomizationPanelFooter>
                         <ModalInputStepper
                             itemCounter={itemCounter}
