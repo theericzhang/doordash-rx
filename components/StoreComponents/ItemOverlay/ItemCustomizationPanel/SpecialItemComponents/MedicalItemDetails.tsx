@@ -42,6 +42,13 @@ const MedicalLabelPatientAddress = styled.span`
     color: var(--quinary-gray);
 `;
 
+const MedicalLabelInstructions = styled.span`
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-black);
+    margin: 9px 0;
+`;
+
 type TMedicalItemDetails = {
     primaryDescription?: string;
     medicationInformation?: TMedicationInformation;
@@ -81,6 +88,9 @@ export default function MedicalItemDetails({ primaryDescription, medicationInfor
                 <MedicalLabelPatientAddress>
                     {medicationInformation?.patientInformation.patientAddress}
                 </MedicalLabelPatientAddress>
+                <MedicalLabelInstructions>
+                    {medicationInformation?.instructions}
+                </MedicalLabelInstructions>
             </MedicalItemDetailsLabel>
 
         </>
