@@ -30,6 +30,12 @@ const MedicalItemDetailsLabel = styled.section`
     padding: 16px;
 `;
 
+const MedicalLabelPatientName = styled.h3`
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--primary-black);
+`;
+
 type TMedicalItemDetails = {
     primaryDescription?: string;
     medicationInformation?: TMedicationInformation;
@@ -63,7 +69,9 @@ export default function MedicalItemDetails({ primaryDescription, medicationInfor
             </MedicalItemDetailsSpanWrapper>
             <BadgeBanner specialDeliveryStatus={specialDeliveryStatus} />
             <MedicalItemDetailsLabel>
-                HI
+                <MedicalLabelPatientName>
+                    {medicationInformation?.patientInformation.patientName}
+                </MedicalLabelPatientName>
             </MedicalItemDetailsLabel>
 
         </>
