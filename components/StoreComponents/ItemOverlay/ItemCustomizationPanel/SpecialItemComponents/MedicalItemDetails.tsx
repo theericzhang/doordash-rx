@@ -53,6 +53,21 @@ const MedicalLabelImportantInfo = styled.span`
     font-size: 16px;
     font-weight: 400;
     color: var(--quinary-red);
+    margin-top: 13px;
+`;
+
+const MedicalLabelInfoUL = styled.ul`
+    display: flex;
+    flex-direction: column;
+    list-style-position: inside;
+    row-gap: 3px;
+    margin-top: 6px;
+`;
+
+const MedicalLabelInfoLI = styled.li`
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--quinary-gray);
 `;
 
 type TMedicalItemDetails = {
@@ -100,6 +115,13 @@ export default function MedicalItemDetails({ primaryDescription, medicationInfor
                 <MedicalLabelImportantInfo>
                     Important Information
                 </MedicalLabelImportantInfo>
+                <MedicalLabelInfoUL>
+                    {medicationInformation?.medicalImportantInformation?.map((info) => (
+                        <MedicalLabelInfoLI>
+                            {info}
+                        </MedicalLabelInfoLI>
+                    ))}
+                </MedicalLabelInfoUL>
             </MedicalItemDetailsLabel>
 
         </>
