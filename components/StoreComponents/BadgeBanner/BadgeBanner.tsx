@@ -22,7 +22,8 @@ const BadgeBannerWrapper = styled.div<TBadgeBanner>`
     justify-content: center;
     align-items: center;
     color: var(--primary-white); 
-    padding: 0 4px;
+    padding-left: 5px;
+    padding-right: 6px;
     position: ${(props) => (props.specialDeliveryStatus ? 'unset' : 'absolute')};
     bottom: ${(props) => (props.specialDeliveryStatus ? 'unset' : '7px')};
     right: ${(props) => (props.specialDeliveryStatus ? 'unset' : '6px')};

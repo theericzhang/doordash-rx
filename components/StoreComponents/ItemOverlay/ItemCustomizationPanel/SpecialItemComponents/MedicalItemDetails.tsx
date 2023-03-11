@@ -28,6 +28,7 @@ const MedicalItemDetailsLabel = styled.section`
     background-color: var(--secondary-gray);
     width: 100%;
     padding: 16px;
+    margin-top: 33px;
 `;
 
 const MedicalLabelPatientName = styled.h3`
