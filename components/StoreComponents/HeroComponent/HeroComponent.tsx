@@ -203,7 +203,6 @@ export default function HeroComponent({ restaurantData, storefrontData }: TResta
     const [isProfileImageLoading, setIsProfileImageLoading] = useState(true);
     const [isHeroImageLoading, setIsHeroImageLoading] = useState(true);
 
-    // TODO: compute the view for pharmacy/special stores, according to the Figma document
     return (
         <HeroComponentWrapper>
             <HeroComponentImagesCollection>
