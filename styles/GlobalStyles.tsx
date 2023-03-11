@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
         --secondary-red: rgba(235, 23, 0, 1);
         --tertiary-red: rgba(217, 20, 0, 1);
         --quaternary-red: rgba(183, 16, 0, 1);
+        --quinary-red: rgba(193, 0, 0, 1);
 
         --primary-teal: rgba(0, 131, 138, 1);
 
