@@ -74,6 +74,7 @@ export type TStoreItem = {
     lastOrdered?: string;
     ratingPercentage?: number;
     ratingCount?: number;
-    specialDeliveryStatus?: string;
+    // specialDeliveryStatus?: string;
+    specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready';
     medicationInformation?: TMedicationInformation;
 };

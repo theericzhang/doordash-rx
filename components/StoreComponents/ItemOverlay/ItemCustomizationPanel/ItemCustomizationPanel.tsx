@@ -304,11 +304,14 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                     </ItemCustomizationPanelMainWrapper>
                     {/* // TODO: Footer needs to be variable - add different buttons like request refill, and have insurance information */}
                     <ItemCustomizationPanelFooter>
-                        {itemData?.specialDeliveryStatus ?
-                            null
-                            :
-                            <ModalInputStepper
+                        {itemData?.specialDeliveryStatus
+                            ? itemData?.specialDeliveryStatus === 'refill-ready' || itemData?.specialDeliveryStatus === 'refill-requested'
+                                ? <p>You will receive a text</p>
+                                : <p>Insurance information</p>
+                            : <ModalInputStepper
+                                // eslint-disable-next-line react/jsx-indent-props
                                 itemCounter={itemCounter}
+                                // eslint-disable-next-line react/jsx-indent-props
                                 setItemCounter={setItemCounter}
                             />}
                         <ItemCustomizationPanelAddToCartButton
