@@ -8,6 +8,13 @@ const FooterTextReminderWrapper = styled.div`
     max-width: 282px;
 `;
 
+const InformationIconWrapper = styled.div`
+    min-width: 11px;
+    margin: 2px 0;
+    display: flex;
+    justify-content: flex-start;
+`;
+
 const FooterTextReminderSpan = styled.span`
     font-size: 14px;
     font-weight: 400;
@@ -17,7 +24,9 @@ const FooterTextReminderSpan = styled.span`
 export default function FooterTextReminder() {
     return (
         <FooterTextReminderWrapper>
-            <Information />
+            <InformationIconWrapper>
+                <Information />
+            </InformationIconWrapper>
             <FooterTextReminderSpan>
                 You will receive a text notification when your refill has been processed
             </FooterTextReminderSpan>
