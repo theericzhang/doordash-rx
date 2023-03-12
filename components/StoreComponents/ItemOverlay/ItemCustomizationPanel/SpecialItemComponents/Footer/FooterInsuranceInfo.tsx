@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Information from '../../../../../Icons/InformationIcon';
+import Aetna from '../../../../../Icons/InsuranceLogos/Aetna';
 
 const FooterInsuranceInfoWrapper = styled.div`
     display: flex;
@@ -22,6 +23,7 @@ type TFooterInsuranceInfo = {
 export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsuranceInfo) {
     return (
         <FooterInsuranceInfoWrapper>
+            {insurer === 'aetna' ? <Aetna /> : null}
             <FooterInsuranceInfoSpan>
                 Member #
                 {' '}
