@@ -21,6 +21,7 @@ import X from '../../../Icons/XIcon';
 import ThumbsUp from '../../../Icons/ThumbsUpIcon';
 import ModalInputStepper from './ModalInputStepper/ModalInputStepper';
 import MedicalItemDetails from './SpecialItemComponents/MedicalItemDetails';
+import FooterTextReminder from './SpecialItemComponents/Footer/FooterTextReminder';
 
 type TItemCustomizationPanel = {
     state: TransitionStatus;
@@ -134,15 +135,15 @@ const ItemCustomizationPanelImage = styled(Image)`
     object-fit: cover;
 `;
 
-const ItemCustomizationPanelFooter = styled.div`
+const ItemCustomizationPanelFooter = styled.div<{ specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready' }>`
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: ${(props) => (props?.specialDeliveryStatus ? 'space-between' : 'flex-end')};
     padding: 16px;
     width: 100%;
     height: 72px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px calc(-1px) 15px;
-    column-gap: 26px;
+    column-gap: ${(props) => (props?.specialDeliveryStatus ? 'unset' : '26px')};
 
     @media screen and (max-width: 480px) {
         column-gap: 0;
@@ -303,10 +304,10 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                         </ItemCustomizationPanelContentWrapper>
                     </ItemCustomizationPanelMainWrapper>
                     {/* // TODO: Footer needs to be variable - add different buttons like request refill, and have insurance information */}
-                    <ItemCustomizationPanelFooter>
+                    <ItemCustomizationPanelFooter specialDeliveryStatus={itemData?.specialDeliveryStatus}>
                         {itemData?.specialDeliveryStatus
                             ? itemData?.specialDeliveryStatus === 'refill-ready' || itemData?.specialDeliveryStatus === 'refill-requested'
-                                ? <p>You will receive a text</p>
+                                ? <FooterTextReminder />
                                 : <p>Insurance information</p>
                             : <ModalInputStepper
                                 // eslint-disable-next-line react/jsx-indent-props
