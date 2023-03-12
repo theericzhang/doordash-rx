@@ -22,6 +22,7 @@ import ThumbsUp from '../../../Icons/ThumbsUpIcon';
 import ModalInputStepper from './ModalInputStepper/ModalInputStepper';
 import MedicalItemDetails from './SpecialItemComponents/MedicalItemDetails';
 import FooterTextReminder from './SpecialItemComponents/Footer/FooterTextReminder';
+import FooterInsuranceInfo from './SpecialItemComponents/Footer/FooterInsuranceInfo';
 
 type TItemCustomizationPanel = {
     state: TransitionStatus;
@@ -308,7 +309,11 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                         {itemData?.specialDeliveryStatus
                             ? itemData?.specialDeliveryStatus === 'refill-ready' || itemData?.specialDeliveryStatus === 'refill-requested'
                                 ? <FooterTextReminder />
-                                : <p>Insurance information</p>
+                                :
+                                <FooterInsuranceInfo
+                                    insurer={itemData.medicationInformation?.patientInformation.patientInsurance.insurer}
+                                    memberID={itemData.medicationInformation?.patientInformation.patientInsurance.memberID}
+                                />
                             : <ModalInputStepper
                                 // eslint-disable-next-line react/jsx-indent-props
                                 itemCounter={itemCounter}
