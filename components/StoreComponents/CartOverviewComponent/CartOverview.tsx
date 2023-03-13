@@ -114,6 +114,7 @@ export default function CartOverview({ isInCartSheet, children }: TCartOverview)
             itemName={restaurants[storeID].storefrontData.items.itemsList[item.itemID].itemName}
             price={restaurants[storeID].storefrontData.items.itemsList[item.itemID].price}
             itemID={item.itemID}
+            isMedication={!!restaurants[storeID].storefrontData.items.itemsList[item.itemID]?.medicationInformation}
             key={restaurants[storeID].storefrontData.items.itemsList[item.itemID].image.src}
         />
     ));

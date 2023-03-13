@@ -64,15 +64,21 @@ type TCartItem = {
     itemName: string;
     price: number;
     itemID: number;
+    isMedication?: boolean;
 };
 
+// TODO: Figure out how to conditionally render a delete-only version of InputStepper for medication items.
+// TODO: Hint - Look at CartItem/CartOverview and see if you can somehow derive a 'specialDeliveryStatus' or 'medicationInformation' property
+
 export default function CartItem({
-    imageSrc, imageAlt, itemName, price, itemID
+    imageSrc, imageAlt, itemName, price, itemID, isMedication
 }: TCartItem) {
     const priceFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });
+
+    console.log(isMedication);
 
     return (
         <CartItemWrapper
