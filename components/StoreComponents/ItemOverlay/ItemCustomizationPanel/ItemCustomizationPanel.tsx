@@ -210,10 +210,14 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
         currency: 'USD',
     });
 
-    function addToCartClickHandler() {
+    const cart = useAppSelector((state) => state.cartSlice.cart);
+    console.log(cart);
+
+    function addToCartClickHandler(isRestrictedItem: boolean) {
         const cartPayload = {
             itemID: itemData.itemID,
             quantity: itemCounter,
+            isRestrictedItem,
         };
         // if the cart matches the currently viewed page's ID
         if (cartStoreID === pageViewingStoreID) {
@@ -321,7 +325,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 setItemCounter={setItemCounter}
                             />}
                         <ItemCustomizationPanelAddToCartButton
-                            onClick={addToCartClickHandler}
+                            onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
                         >
                             Add to Cart -
                             {' '}

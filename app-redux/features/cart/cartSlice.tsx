@@ -111,6 +111,7 @@ const cartSlice = createSlice({
                     {
                         itemID: action.payload.itemID,
                         quantity: action.payload.quantity,
+                        isRestrictedItem: action.payload.isRestrictedItem,
                     },
                 ];
             }
