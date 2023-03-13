@@ -23,6 +23,7 @@ type TFooterInsuranceInfo = {
 export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsuranceInfo) {
     return (
         <FooterInsuranceInfoWrapper>
+            {/* //TODO: aetna case is widely hardcoded in - in the future, we will need to consider cases for all insurance providers */}
             {insurer === 'aetna' ? <Aetna /> : null}
             <FooterInsuranceInfoSpan>
                 Member #
