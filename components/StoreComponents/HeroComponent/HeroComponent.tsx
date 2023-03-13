@@ -184,7 +184,6 @@ export default function HeroComponent({ restaurantData, storefrontData }: TResta
     // already checking to see if storefrontData?.ratingCount exists. disable this lint rule
     // eslint-disable-next-line no-unsafe-optional-chaining
     const ratingsCountLocalized = storefrontData?.ratingCount && `${(Math.floor(storefrontData?.ratingCount / 100) * 100).toLocaleString()}+ ratings`;
-    console.log(storefrontData?.ratingCount);
     // in the future, validate time (isOpen) against a ground truth source instead of machine local.
     const currentTime = new Date();
 
