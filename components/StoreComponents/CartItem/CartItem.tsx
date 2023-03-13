@@ -67,9 +67,6 @@ type TCartItem = {
     isMedication?: boolean;
 };
 
-// TODO: Figure out how to conditionally render a delete-only version of InputStepper for medication items.
-// TODO: Hint - use isMedication to do so
-
 export default function CartItem({
     imageSrc, imageAlt, itemName, price, itemID, isMedication
 }: TCartItem) {
