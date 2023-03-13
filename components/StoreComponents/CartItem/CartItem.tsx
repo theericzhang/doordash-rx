@@ -64,10 +64,11 @@ type TCartItem = {
     itemName: string;
     price: number;
     itemID: number;
+    isMedication?: boolean;
 };
 
 export default function CartItem({
-    imageSrc, imageAlt, itemName, price, itemID
+    imageSrc, imageAlt, itemName, price, itemID, isMedication
 }: TCartItem) {
     const priceFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -98,6 +99,7 @@ export default function CartItem({
             </CartItemDescriptionWrapper>
             <InputStepper
                 itemID={itemID}
+                isMedication={isMedication}
             />
         </CartItemWrapper>
     );

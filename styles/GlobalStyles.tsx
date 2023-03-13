@@ -19,12 +19,14 @@ const GlobalStyles = createGlobalStyle`
         --secondary-red: rgba(235, 23, 0, 1);
         --tertiary-red: rgba(217, 20, 0, 1);
         --quaternary-red: rgba(183, 16, 0, 1);
+        --quinary-red: rgba(193, 0, 0, 1);
 
         --primary-teal: rgba(0, 131, 138, 1);
 
         --primary-green: rgba(0, 135, 47, 1);
 
         --primary-gold: rgba(161, 108, 0, 1);
+        --secondary-gold: rgba(225, 163, 37, 1);
         
         /* System Font Family Variable */
         --primary-font-family: 'TTNorms';

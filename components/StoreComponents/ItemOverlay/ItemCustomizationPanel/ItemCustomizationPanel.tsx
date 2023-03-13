@@ -20,6 +20,9 @@ import {
 import X from '../../../Icons/XIcon';
 import ThumbsUp from '../../../Icons/ThumbsUpIcon';
 import ModalInputStepper from './ModalInputStepper/ModalInputStepper';
+import MedicalItemDetails from './SpecialItemComponents/MedicalItemDetails';
+import FooterTextReminder from './SpecialItemComponents/Footer/FooterTextReminder';
+import FooterInsuranceInfo from './SpecialItemComponents/Footer/FooterInsuranceInfo';
 
 type TItemCustomizationPanel = {
     state: TransitionStatus;
@@ -133,15 +136,15 @@ const ItemCustomizationPanelImage = styled(Image)`
     object-fit: cover;
 `;
 
-const ItemCustomizationPanelFooter = styled.div`
+const ItemCustomizationPanelFooter = styled.div<{ specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready' }>`
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: ${(props) => (props?.specialDeliveryStatus ? 'space-between' : 'flex-end')};
     padding: 16px;
     width: 100%;
     height: 72px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px calc(-1px) 15px;
-    column-gap: 26px;
+    column-gap: ${(props) => (props?.specialDeliveryStatus ? 'unset' : '26px')};
 
     @media screen and (max-width: 480px) {
         column-gap: 0;
@@ -207,10 +210,14 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
         currency: 'USD',
     });
 
-    function addToCartClickHandler() {
+    const cart = useAppSelector((state) => state.cartSlice.cart);
+    console.log(cart);
+
+    function addToCartClickHandler(isRestrictedItem: boolean) {
         const cartPayload = {
             itemID: itemData.itemID,
             quantity: itemCounter,
+            isRestrictedItem,
         };
         // if the cart matches the currently viewed page's ID
         if (cartStoreID === pageViewingStoreID) {
@@ -261,43 +268,64 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                             <ItemCustomizationPanelItemName>
                                 {itemData?.itemName}
                             </ItemCustomizationPanelItemName>
-                            {itemData?.ratingCount ? (
-                                <ItemCustomizationPanelStatsWrapper>
-                                    <ThumbsUp size={16} />
-                                    <ItemCustomizationPanelStats>
-                                        {itemData.ratingPercentage}
-                                        % (
-                                        {itemData.ratingCount}
-                                        )
-                                    </ItemCustomizationPanelStats>
-                                </ItemCustomizationPanelStatsWrapper>
-                            ) : null}
-                            {itemData?.description ? (
-                                <ItemCustomizationPanelItemDescription>
-                                    {itemData?.description}
-                                </ItemCustomizationPanelItemDescription>
-                            ) : null}
-                            {itemData?.image.src ? (
-                                <ItemCustomizationPanelImageWrapper>
-                                    {isImageLoading ? <Shimmer width={600} /> : null}
-                                    <ItemCustomizationPanelImage
-                                        src={itemData.image.src}
-                                        alt={itemData.image.alt}
-                                        sizes="295px"
-                                        fill
-                                        onLoadingComplete={() => setIsImageLoading(false)}
-                                    />
-                                </ItemCustomizationPanelImageWrapper>
-                            ) : null}
+                            {itemData?.specialDeliveryStatus ?
+                                <MedicalItemDetails
+                                    primaryDescription={itemData.description}
+                                    medicationInformation={itemData.medicationInformation}
+                                    specialDeliveryStatus={itemData.specialDeliveryStatus}
+                                />
+                                :
+                                <>
+                                    {itemData?.ratingCount ? (
+                                        <ItemCustomizationPanelStatsWrapper>
+                                            <ThumbsUp size={16} />
+                                            <ItemCustomizationPanelStats>
+                                                {itemData.ratingPercentage}
+                                                % (
+                                                {itemData.ratingCount}
+                                                )
+                                            </ItemCustomizationPanelStats>
+                                        </ItemCustomizationPanelStatsWrapper>
+                                    ) : null}
+                                    {itemData?.description ? (
+                                        <ItemCustomizationPanelItemDescription>
+                                            {itemData?.description}
+                                        </ItemCustomizationPanelItemDescription>
+                                    ) : null}
+                                    {itemData?.image.src ? (
+                                        <ItemCustomizationPanelImageWrapper>
+                                            {isImageLoading ? <Shimmer width={600} /> : null}
+                                            <ItemCustomizationPanelImage
+                                                src={itemData.image.src}
+                                                alt={itemData.image.alt}
+                                                sizes="295px"
+                                                fill
+                                                onLoadingComplete={() => setIsImageLoading(false)}
+                                            />
+                                        </ItemCustomizationPanelImageWrapper>
+                                    ) : null}
+
+                                </>}
                         </ItemCustomizationPanelContentWrapper>
                     </ItemCustomizationPanelMainWrapper>
-                    <ItemCustomizationPanelFooter>
-                        <ModalInputStepper
-                            itemCounter={itemCounter}
-                            setItemCounter={setItemCounter}
-                        />
+                    {/* // TODO: Footer needs to be variable - add different buttons like request refill, and have insurance information */}
+                    <ItemCustomizationPanelFooter specialDeliveryStatus={itemData?.specialDeliveryStatus}>
+                        {itemData?.specialDeliveryStatus
+                            ? itemData?.specialDeliveryStatus === 'refill-ready' || itemData?.specialDeliveryStatus === 'refill-requested'
+                                ? <FooterTextReminder />
+                                :
+                                <FooterInsuranceInfo
+                                    insurer={itemData.medicationInformation?.patientInformation.patientInsurance.insurer}
+                                    memberID={itemData.medicationInformation?.patientInformation.patientInsurance.memberID}
+                                />
+                            : <ModalInputStepper
+                                // eslint-disable-next-line react/jsx-indent-props
+                                itemCounter={itemCounter}
+                                // eslint-disable-next-line react/jsx-indent-props
+                                setItemCounter={setItemCounter}
+                            />}
                         <ItemCustomizationPanelAddToCartButton
-                            onClick={addToCartClickHandler}
+                            onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
                         >
                             Add to Cart -
                             {' '}

@@ -37,7 +37,29 @@ export type TStorefrontData = {
         closeHour: number;
         closeMinute: number;
     }[];
-    items: TStoreItem[];
+    items: TStoreItemCategory;
+};
+
+export type TStoreItemCategory = {
+    itemsName: string;
+    itemsNameDesc: string;
+    itemsList: TStoreItem[];
+};
+
+export type TMedicationInformation = {
+    lastFilledDate: string;
+    quantity: number;
+    refills: number;
+    patientInformation: {
+        patientName: string;
+        patientAddress: string;
+        patientInsurance: {
+            insurer: string;
+            memberID: number;
+        };
+    };
+    instructions: string;
+    medicalImportantInformation: string[];
 };
 
 export type TStoreItem = {
@@ -50,6 +72,8 @@ export type TStoreItem = {
     price: number;
     description?: string;
     lastOrdered?: string;
-    ratingPercentage: number;
-    ratingCount: number;
+    ratingPercentage?: number;
+    ratingCount?: number;
+    specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready';
+    medicationInformation?: TMedicationInformation;
 };

@@ -50,9 +50,10 @@ const InputStepperLabel = styled.span`
 
 type TInputStepper = {
     itemID: number;
+    isMedication?: boolean;
 };
 
-export default function InputStepper({ itemID }: TInputStepper) {
+export default function InputStepper({ itemID, isMedication }: TInputStepper) {
     const stateCart = useAppSelector((state) => state.cartSlice.cart);
     let quantityCart = 0;
 
@@ -110,12 +111,14 @@ export default function InputStepper({ itemID }: TInputStepper) {
                     ×
                 </InputStepperLabel>
             </InputStepperLabelWrapper>
-            <InputStepperButton
-                onClick={handleClickIncrement}
-                aria-label={`Add quantity. Currently at ${quantityCart} items.`}
-            >
-                <Plus />
-            </InputStepperButton>
+            {isMedication ?
+                null :
+                <InputStepperButton
+                    onClick={handleClickIncrement}
+                    aria-label={`Add quantity. Currently at ${quantityCart} items.`}
+                >
+                    <Plus />
+                </InputStepperButton>}
         </InputStepperWrapper>
     );
 }

@@ -80,8 +80,6 @@ const MenuSectionItemsDivider = styled.hr`
         border-bottom: 1px solid var(--primary-gray);
     }
 `;
-// TODO: Change MenuSectionHeader and Subheader to be dynamic.
-// TODO: Look into datav2 to see if you can generate a subsection for items, much like carousels? May need to nuke this idea for now
 export default function MenuSection() {
     const restaurantMenu = useContext(StoreItemsContext);
 
@@ -89,14 +87,14 @@ export default function MenuSection() {
         <MenuSectionSection>
             <MenuSectionHeaderWrapper>
                 <MenuSectionHeader>
-                    Popular Items
+                    {restaurantMenu?.itemsName}
                 </MenuSectionHeader>
                 <MenuSectionSubheader>
-                    The most commonly ordered items and dishes from this store
+                    {restaurantMenu?.itemsNameDesc}
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
-                {restaurantMenu?.map((item, index) => (
+                {restaurantMenu?.itemsList?.map((item, index) => (
                     <Fragment key={item.itemName}>
                         <MenuItem
                             itemID={index}
@@ -104,9 +102,11 @@ export default function MenuSection() {
                             itemName={item.itemName}
                             price={item.price}
                             description={item.description}
-                            ratingCount={item.ratingCount}
-                            ratingPercentage={item.ratingPercentage}
+                            ratingCount={item?.ratingCount}
+                            ratingPercentage={item?.ratingPercentage}
                             lastOrdered={item?.lastOrdered}
+                            specialDeliveryStatus={item?.specialDeliveryStatus}
+                            medicationInformation={item?.medicationInformation}
                         />
                         <MenuSectionItemsDivider />
                     </Fragment>

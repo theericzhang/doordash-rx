@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import ThumbsUp from '../../Icons/ThumbsUpIcon';
 import Shimmer from '../../Placeholders/Shimmer';
+import BadgeBanner from '../BadgeBanner/BadgeBanner';
 import { TStoreItem } from '../../../global';
 import { useAppDispatch } from '../../../app-redux/hooks';
 import { toggleIsModalOpen, setModalData } from '../../../app-redux/features/item/itemSlice';
@@ -121,7 +122,7 @@ const ItemImage = styled(Image)`
 `;
 
 export default function MenuItem({
-    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered
+    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
 }: TStoreItem) {
     const dispatch = useAppDispatch();
     const priceFormatter = new Intl.NumberFormat('en-US', {
@@ -138,7 +139,7 @@ export default function MenuItem({
                 () => {
                     dispatch(toggleIsModalOpen());
                     dispatch(setModalData({
-                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered
+                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
                     }));
                 }
             }
@@ -148,20 +149,25 @@ export default function MenuItem({
                 <ItemTextDescription>
                     {description}
                 </ItemTextDescription>
-                <ItemTextStatsWrapper>
-                    <ItemTextPrice>{priceFormatter.format(price)}</ItemTextPrice>
-                    <ItemTextStats>•</ItemTextStats>
-                    <ThumbsUp />
-                    <ItemTextStats>
-                        {ratingPercentage}
-                        % (
-                        {ratingCount}
-                        )
-                    </ItemTextStats>
-                </ItemTextStatsWrapper>
-                <ItemTextLastOrdered>
-                    {lastOrdered ? `Last ordered on ${lastOrdered}` : null}
-                </ItemTextLastOrdered>
+                {ratingPercentage ?
+                    <ItemTextStatsWrapper>
+                        <ItemTextPrice>{priceFormatter.format(price)}</ItemTextPrice>
+                        <ItemTextStats>•</ItemTextStats>
+                        <ThumbsUp />
+                        <ItemTextStats>
+                            {ratingPercentage}
+                            % (
+                            {ratingCount}
+                            )
+                        </ItemTextStats>
+                    </ItemTextStatsWrapper>
+                    : null}
+                {lastOrdered ?
+                    <ItemTextLastOrdered>
+                        {`Last ordered on ${lastOrdered}`}
+                    </ItemTextLastOrdered>
+                    : null}
+                {specialDeliveryStatus ? <BadgeBanner specialDeliveryStatus={specialDeliveryStatus} /> : null}
             </ItemTextWrapper>
             <ItemImageWrapper>
                 {isImageLoading ? <Shimmer width={300} /> : null}

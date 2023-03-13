@@ -12,6 +12,7 @@ interface ICartState {
 interface ICartItem {
     itemID: number;
     quantity: number;
+    isRestrictedItem?: boolean;
 }
 
 const initialState: ICartState = {
@@ -38,7 +39,7 @@ function calculateCartTotal() {
         sum +=
             item.quantity *
             restaurants[initialState.storeID as keyof typeof restaurants]
-                .storefrontData.items[item.itemID].price;
+                .storefrontData.items.itemsList[item.itemID].price;
     });
     return sum;
 }
@@ -51,7 +52,7 @@ function immutableCalculateCartTotal(state: ICartState) {
         sum +=
             item.quantity *
             restaurants[state.storeID as keyof typeof restaurants]
-                .storefrontData.items[item.itemID].price;
+                .storefrontData.items.itemsList[item.itemID].price;
     });
     state.totalValue = sum;
 }
@@ -110,6 +111,7 @@ const cartSlice = createSlice({
                     {
                         itemID: action.payload.itemID,
                         quantity: action.payload.quantity,
+                        isRestrictedItem: action.payload.isRestrictedItem,
                     },
                 ];
             }

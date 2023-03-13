@@ -109,12 +109,14 @@ export default function CartOverview({ isInCartSheet, children }: TCartOverview)
 
     const arrayOfCartItems = cart.map((item) => (
         <CartItem
-            imageSrc={restaurants[storeID].storefrontData.items[item.itemID].image.src}
-            imageAlt={restaurants[storeID].storefrontData.items[item.itemID].image.alt}
-            itemName={restaurants[storeID].storefrontData.items[item.itemID].itemName}
-            price={restaurants[storeID].storefrontData.items[item.itemID].price}
+            imageSrc={restaurants[storeID].storefrontData.items.itemsList[item.itemID].image.src}
+            imageAlt={restaurants[storeID].storefrontData.items.itemsList[item.itemID].image.alt}
+            itemName={restaurants[storeID].storefrontData.items.itemsList[item.itemID].itemName}
+            price={restaurants[storeID].storefrontData.items.itemsList[item.itemID].price}
             itemID={item.itemID}
-            key={restaurants[storeID].storefrontData.items[item.itemID].image.src}
+            // TODO: Figure out why .medicationInformation is throwing type errors. May have to do with other stores that don't have medicationInformation
+            isMedication={!!restaurants[storeID].storefrontData.items.itemsList[item.itemID]?.medicationInformation}
+            key={restaurants[storeID].storefrontData.items.itemsList[item.itemID].image.src}
         />
     ));
 
