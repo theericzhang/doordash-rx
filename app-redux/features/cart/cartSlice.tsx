@@ -12,6 +12,7 @@ interface ICartState {
 interface ICartItem {
     itemID: number;
     quantity: number;
+    isRestrictedItem?: boolean;
 }
 
 const initialState: ICartState = {
