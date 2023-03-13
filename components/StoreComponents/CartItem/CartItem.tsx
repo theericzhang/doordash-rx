@@ -102,6 +102,7 @@ export default function CartItem({
             </CartItemDescriptionWrapper>
             <InputStepper
                 itemID={itemID}
+                isMedication={isMedication}
             />
         </CartItemWrapper>
     );
