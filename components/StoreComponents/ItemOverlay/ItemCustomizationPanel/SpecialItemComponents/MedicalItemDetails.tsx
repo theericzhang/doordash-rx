@@ -118,7 +118,7 @@ export default function MedicalItemDetails({ primaryDescription, medicationInfor
                 </MedicalLabelImportantInfo>
                 <MedicalLabelInfoUL>
                     {medicationInformation?.medicalImportantInformation?.map((info) => (
-                        <MedicalLabelInfoLI>
+                        <MedicalLabelInfoLI key={info}>
                             {info}
                         </MedicalLabelInfoLI>
                     ))}
