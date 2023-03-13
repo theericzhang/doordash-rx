@@ -21,6 +21,18 @@ type TFooterInsuranceInfo = {
 };
 
 export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsuranceInfo) {
+    const stringOfMemberID = memberID?.toString();
+    console.log(stringOfMemberID);
+
+    let concealedMemberID: string = '';
+    for (let i = 0; i < stringOfMemberID?.length; i++) {
+        if (i < stringOfMemberID?.length - 3) {
+            concealedMemberID += '*';
+        } else {
+            concealedMemberID += stringOfMemberID[i];
+        }
+    }
+
     return (
         <FooterInsuranceInfoWrapper>
             {/* //TODO: aetna case is widely hardcoded in - in the future, we will need to consider cases for all insurance providers */}
@@ -29,7 +41,7 @@ export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsura
                 Member #
                 {' '}
                 {' '}
-                {memberID}
+                {concealedMemberID}
             </FooterInsuranceInfoSpan>
             <Information />
         </FooterInsuranceInfoWrapper>
