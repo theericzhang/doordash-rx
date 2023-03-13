@@ -22,14 +22,13 @@ type TFooterInsuranceInfo = {
 
 export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsuranceInfo) {
     const stringOfMemberID = memberID?.toString();
-    console.log(stringOfMemberID);
 
     let concealedMemberID: string = '';
-    for (let i = 0; i < stringOfMemberID?.length; i++) {
-        if (i < stringOfMemberID?.length - 3) {
+    for (let i = 0; i < stringOfMemberID!.length; i++) {
+        if (i < stringOfMemberID!.length - 3) {
             concealedMemberID += '*';
         } else {
-            concealedMemberID += stringOfMemberID[i];
+            concealedMemberID += stringOfMemberID![i];
         }
     }
 
