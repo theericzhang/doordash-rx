@@ -114,6 +114,7 @@ export default function CartOverview({ isInCartSheet, children }: TCartOverview)
             itemName={restaurants[storeID].storefrontData.items.itemsList[item.itemID].itemName}
             price={restaurants[storeID].storefrontData.items.itemsList[item.itemID].price}
             itemID={item.itemID}
+            // TODO: Figure out why .medicationInformation is throwing type errors. May have to do with other stores that don't have medicationInformation
             isMedication={!!restaurants[storeID].storefrontData.items.itemsList[item.itemID]?.medicationInformation}
             key={restaurants[storeID].storefrontData.items.itemsList[item.itemID].image.src}
         />
