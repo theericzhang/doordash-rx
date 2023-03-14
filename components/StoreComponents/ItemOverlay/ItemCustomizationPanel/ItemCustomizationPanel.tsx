@@ -211,6 +211,10 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
     });
 
     const cart = useAppSelector((state) => state.cartSlice.cart);
+    const currentItemInCartRestricted = false;
+
+    // if ((cartStoreID === pageViewingStoreID) && )
+
     console.log(cart);
 
     function addToCartClickHandler(isRestrictedItem: boolean) {
