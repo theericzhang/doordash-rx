@@ -213,12 +213,15 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
     const cart = useAppSelector((state) => state.cartSlice.cart);
     let currentItemInCartRestricted = false;
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const item of cart) {
         if ((cartStoreID === pageViewingStoreID) && item?.isRestrictedItem && !!itemData?.specialDeliveryStatus && (item?.itemID === itemData?.itemID)) {
             currentItemInCartRestricted = true;
             break;
         }
     }
+
+    // TODO: RENDER PROPER FOOTER BUTTONS. THINK - ALREADY IN CART?
 
     console.log(cart);
 
