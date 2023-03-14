@@ -211,9 +211,14 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
     });
 
     const cart = useAppSelector((state) => state.cartSlice.cart);
-    const currentItemInCartRestricted = false;
+    let currentItemInCartRestricted = false;
 
-    // if ((cartStoreID === pageViewingStoreID) && )
+    for (const item of cart) {
+        if ((cartStoreID === pageViewingStoreID) && item?.isRestrictedItem && !!itemData?.specialDeliveryStatus && (item?.itemID === itemData?.itemID)) {
+            currentItemInCartRestricted = true;
+            break;
+        }
+    }
 
     console.log(cart);
 
@@ -329,15 +334,18 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 // eslint-disable-next-line react/jsx-indent-props
                                 setItemCounter={setItemCounter}
                             />}
-                        <ItemCustomizationPanelAddToCartButton
-                            onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
-                        >
-                            Add to Cart -
-                            {' '}
-                            {priceFormatter.format(
-                                itemData.price * itemCounter
-                            )}
-                        </ItemCustomizationPanelAddToCartButton>
+                        {currentItemInCartRestricted ?
+                            <p>No!!</p>
+                            :
+                            <ItemCustomizationPanelAddToCartButton
+                                onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
+                            >
+                                Add to Cart -
+                                {' '}
+                                {priceFormatter.format(
+                                    itemData.price * itemCounter
+                                )}
+                            </ItemCustomizationPanelAddToCartButton>}
                     </ItemCustomizationPanelFooter>
                 </ItemCustomizationPanelWrapper>
             )}
