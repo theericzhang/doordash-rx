@@ -364,17 +364,21 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                             />}
                         {currentItemInCartRestricted ?
                             <ItemCustomizationPanelAlreadyAddedButton>
-                                Already in cart
+                                {itemData?.specialDeliveryStatus === 'refill-requested' ? 'Refill requested' : 'Already in cart'}
                             </ItemCustomizationPanelAlreadyAddedButton>
                             :
                             <ItemCustomizationPanelAddToCartButton
                                 onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
                             >
-                                Add to Cart -
-                                {' '}
-                                {priceFormatter.format(
+                                {itemData?.specialDeliveryStatus === 'refill-ready' ?
+                                    'Request a refill'
+                                    : `Add to Cart -
+                                ${' '}
+                                ${priceFormatter.format(
+                    // eslint-disable-next-line indent
                                     itemData.price * itemCounter
-                                )}
+                    // eslint-disable-next-line indent
+                                )}`}
                             </ItemCustomizationPanelAddToCartButton>}
                     </ItemCustomizationPanelFooter>
                 </ItemCustomizationPanelWrapper>
