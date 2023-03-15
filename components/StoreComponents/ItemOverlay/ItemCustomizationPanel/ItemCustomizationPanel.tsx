@@ -186,6 +186,31 @@ const ItemCustomizationPanelAddToCartButton = styled.button`
     }
 `;
 
+const ItemCustomizationPanelAlreadyAddedButton = styled.button`
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--quinary-gray);
+    border-radius: 20px;
+    transition: ease 0.15s;
+    transition-property: background-color;
+    padding: 0 25px;
+    color: var(--primary-white);
+    font-weight: 500;
+    font-size: 16px;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+
+    @media screen and (max-width: 480px) {
+        width: 192px;
+        padding: 0 5px;
+    }
+`;
+
 export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCustomizationPanel) {
     // we need this local state to talk between modalinputstepper and add to cart button
     const [itemCounter, setItemCounter] = useState(1);
@@ -338,7 +363,9 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 setItemCounter={setItemCounter}
                             />}
                         {currentItemInCartRestricted ?
-                            <p>No!!</p>
+                            <ItemCustomizationPanelAlreadyAddedButton>
+                                Already in cart
+                            </ItemCustomizationPanelAlreadyAddedButton>
                             :
                             <ItemCustomizationPanelAddToCartButton
                                 onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
