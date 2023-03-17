@@ -246,11 +246,9 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
         }
     }
 
-    // TODO: RENDER PROPER FOOTER BUTTONS. THINK - ALREADY IN CART?
-
     console.log(cart);
 
-    function addToCartClickHandler(isRestrictedItem: boolean, specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested') {
+    function addToCartClickHandler(isRestrictedItem: boolean, specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested' | undefined) {
         const cartPayload = {
             itemID: itemData.itemID,
             quantity: itemCounter,
