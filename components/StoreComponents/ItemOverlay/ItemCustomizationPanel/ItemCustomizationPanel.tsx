@@ -258,20 +258,20 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
         };
         // if the cart matches the currently viewed page's ID
         if (cartStoreID === pageViewingStoreID) {
-            dispatch(addItemToCart(cartPayload));
+            setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
             dispatch(toggleIsModalOpen());
         }
         // if the cart store is not defined meaning no items in cart, set the viewingID and then add
         else if (cartStoreID === undefined && !!pageViewingStoreID) {
             dispatch(setPageViewingStoreID(pageViewingStoreID));
             dispatch(setStoreID(pageViewingStoreID));
-            dispatch(addItemToCart(cartPayload));
+            setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
             dispatch(toggleIsModalOpen());
         }
         // if the cart's storeID doesn't match the viewingID, then start a new cart.
         else if (cartStoreID !== pageViewingStoreID && !!pageViewingStoreID) {
             dispatch(resetCartNewStore(pageViewingStoreID));
-            dispatch(addItemToCart(cartPayload));
+            setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
             dispatch(toggleIsModalOpen());
         }
     }
