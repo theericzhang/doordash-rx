@@ -250,29 +250,33 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
 
     console.log(cart);
 
-    function addToCartClickHandler(isRestrictedItem: boolean) {
+    function addToCartClickHandler(isRestrictedItem: boolean, specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested') {
         const cartPayload = {
             itemID: itemData.itemID,
             quantity: itemCounter,
             isRestrictedItem,
         };
-        // if the cart matches the currently viewed page's ID
-        if (cartStoreID === pageViewingStoreID) {
-            setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
-            dispatch(toggleIsModalOpen());
-        }
-        // if the cart store is not defined meaning no items in cart, set the viewingID and then add
-        else if (cartStoreID === undefined && !!pageViewingStoreID) {
-            dispatch(setPageViewingStoreID(pageViewingStoreID));
-            dispatch(setStoreID(pageViewingStoreID));
-            setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
-            dispatch(toggleIsModalOpen());
-        }
-        // if the cart's storeID doesn't match the viewingID, then start a new cart.
-        else if (cartStoreID !== pageViewingStoreID && !!pageViewingStoreID) {
-            dispatch(resetCartNewStore(pageViewingStoreID));
-            setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
-            dispatch(toggleIsModalOpen());
+        if (specialDeliveryStatus === 'delivery-ready' || !specialDeliveryStatus) {
+            // if the cart matches the currently viewed page's ID
+            if (cartStoreID === pageViewingStoreID) {
+                setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
+                dispatch(toggleIsModalOpen());
+            }
+            // if the cart store is not defined meaning no items in cart, set the viewingID and then add
+            else if (cartStoreID === undefined && !!pageViewingStoreID) {
+                dispatch(setPageViewingStoreID(pageViewingStoreID));
+                dispatch(setStoreID(pageViewingStoreID));
+                setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
+                dispatch(toggleIsModalOpen());
+            }
+            // if the cart's storeID doesn't match the viewingID, then start a new cart.
+            else if (cartStoreID !== pageViewingStoreID && !!pageViewingStoreID) {
+                dispatch(resetCartNewStore(pageViewingStoreID));
+                setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
+                dispatch(toggleIsModalOpen());
+            }
+        } else {
+            // handle status update of refill-ready
         }
     }
 
@@ -368,7 +372,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                             </ItemCustomizationPanelAlreadyAddedButton>
                             :
                             <ItemCustomizationPanelAddToCartButton
-                                onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
+                                onClick={() => addToCartClickHandler(!!itemData.medicationInformation, itemData?.specialDeliveryStatus)}
                             >
                                 {itemData?.specialDeliveryStatus === 'refill-ready' ?
                                     'Request a refill'
