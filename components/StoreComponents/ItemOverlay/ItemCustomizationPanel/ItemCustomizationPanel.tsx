@@ -9,7 +9,7 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import Image from 'next/image';
 import Shimmer from '../../../Placeholders/Shimmer';
 import { useAppDispatch, useAppSelector } from '../../../../app-redux/hooks';
-import { toggleIsModalOpen } from '../../../../app-redux/features/item/itemSlice';
+import { toggleIsModalOpen, setItemSpecialDeliveryStatusToRefillRequested } from '../../../../app-redux/features/item/itemSlice';
 import {
     addItemToCart,
     setStoreID,
@@ -246,8 +246,6 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
         }
     }
 
-    console.log(cart);
-
     function addToCartClickHandler(isRestrictedItem: boolean, specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested' | undefined) {
         const cartPayload = {
             itemID: itemData.itemID,
@@ -273,9 +271,39 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                 setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
                 dispatch(toggleIsModalOpen());
             }
-        } else {
+        } else if (specialDeliveryStatus === 'refill-ready') {
             // handle status update of refill-ready
+            dispatch(setItemSpecialDeliveryStatusToRefillRequested());
         }
+    }
+
+    let addToCartButtonText: string;
+
+    switch (itemData?.specialDeliveryStatus) {
+    case 'delivery-ready':
+        addToCartButtonText = `Add to Cart -
+            ${' '}
+            ${priceFormatter.format(
+        // eslint-disable-next-line indent
+                itemData.price * itemCounter
+        // eslint-disable-next-line indent
+            )}`;
+        break;
+    case 'refill-ready':
+        addToCartButtonText = 'Request a refill';
+        break;
+    case 'refill-requested':
+        addToCartButtonText = 'Refill requested';
+        break;
+    default:
+        addToCartButtonText = `Add to Cart -
+            ${' '}
+            ${priceFormatter.format(
+        // eslint-disable-next-line indent
+                itemData.price * itemCounter
+        // eslint-disable-next-line indent
+            )}`;
+        break;
     }
 
     return (
@@ -372,15 +400,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                             <ItemCustomizationPanelAddToCartButton
                                 onClick={() => addToCartClickHandler(!!itemData.medicationInformation, itemData?.specialDeliveryStatus)}
                             >
-                                {itemData?.specialDeliveryStatus === 'refill-ready' ?
-                                    'Request a refill'
-                                    : `Add to Cart -
-                                ${' '}
-                                ${priceFormatter.format(
-                    // eslint-disable-next-line indent
-                                    itemData.price * itemCounter
-                    // eslint-disable-next-line indent
-                                )}`}
+                                {addToCartButtonText}
                             </ItemCustomizationPanelAddToCartButton>}
                     </ItemCustomizationPanelFooter>
                 </ItemCustomizationPanelWrapper>
