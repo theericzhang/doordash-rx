@@ -23,9 +23,14 @@ const itemSlice = createSlice({
         },
         setModalData: (state, action: PayloadAction<TStoreItem>) => {
             state.itemData = action.payload;
+        },
+        setItemSpecialDeliveryStatus: (state) => {
+            state.itemData.specialDeliveryStatus = 'refill-requested';
         }
     }
 });
 
-export const { toggleIsModalOpen, setIsModalOpenFalse, setModalData } = itemSlice.actions;
+export const {
+    toggleIsModalOpen, setIsModalOpenFalse, setModalData, setItemSpecialDeliveryStatus
+} = itemSlice.actions;
 export default itemSlice.reducer;
