@@ -81,20 +81,20 @@ const MenuSectionItemsDivider = styled.hr`
     }
 `;
 export default function MenuSection() {
-    const restaurantMenu = useContext(StoreItemsContext);
+    const RestaurantContext = useContext(StoreItemsContext);
 
     return (
         <MenuSectionSection>
             <MenuSectionHeaderWrapper>
                 <MenuSectionHeader>
-                    {restaurantMenu?.restaurantData.storefrontData.items?.itemsName}
+                    {RestaurantContext?.restaurantData.storefrontData.items?.itemsName}
                 </MenuSectionHeader>
                 <MenuSectionSubheader>
-                    {restaurantMenu?.restaurantData.storefrontData.items?.itemsNameDesc}
+                    {RestaurantContext?.restaurantData.storefrontData.items?.itemsNameDesc}
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
-                {restaurantMenu?.restaurantData.storefrontData.items?.itemsList?.map((item, index) => (
+                {RestaurantContext?.restaurantData.storefrontData.items?.itemsList?.map((item, index) => (
                     <Fragment key={item.itemName}>
                         <MenuItem
                             itemID={index}
