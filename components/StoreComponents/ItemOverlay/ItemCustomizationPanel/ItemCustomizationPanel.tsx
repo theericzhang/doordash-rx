@@ -175,9 +175,9 @@ const ItemCustomizationPanelAddToCartButton = styled.button<{ specialDeliverySta
     }
 
     &:active {
-        transition: 0.15s ease;
-        transition-property: background-color;
-        background-color: var(--quaternary-red);
+        transition: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'ease 0.15s')};
+        transition-property: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'background-color')};
+        background-color: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? '' : 'var(--tertiary-red)')};
     }
 
     @media screen and (max-width: 480px) {
