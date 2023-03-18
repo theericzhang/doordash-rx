@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import { restaurantList } from '../../components/datav2';
 import {
     TRestaurantDataPrimary, TStorefrontData, TStoreItemCategory
@@ -23,11 +23,20 @@ type TServerSideProps = {
     storeID: string;
 };
 
-export const StoreItemsContext = createContext<TStoreItemCategory | null>(null);
+type TStoreItemsContext = {
+    restaurantData: {
+        restaurantData: TRestaurantDataPrimary;
+        storefrontData: TStorefrontData;
+    };
+    setRestaurantData: React.Dispatch<React.SetStateAction<{ restaurantData: TRestaurantDataPrimary; storefrontData: TStorefrontData; }>>;
+};
+
+export const StoreItemsContext = createContext<TStoreItemsContext | null>(null);
 
 export default function Store({ restaurant, storeID }: TServerSideProps) {
     const dispatch = useAppDispatch();
     dispatch(setPageViewingStoreID(Number(storeID)));
+    const [restaurantData, setRestaurantData] = useState(restaurant);
     return (
         <>
             <Head>
@@ -48,7 +57,8 @@ export default function Store({ restaurant, storeID }: TServerSideProps) {
                     storefrontData={restaurant.storefrontData}
                 />
                 {/* Insert Rest of the Store's components */}
-                <StoreItemsContext.Provider value={restaurant.storefrontData.items}>
+                {/* <StoreItemsContext.Provider value={restaurant.storefrontData.items}> */}
+                <StoreItemsContext.Provider value={{ restaurantData, setRestaurantData }}>
                     <QuickActions />
                 </StoreItemsContext.Provider>
                 <CartOverview isInCartSheet={false} />
