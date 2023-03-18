@@ -76,4 +76,8 @@ export type TStoreItem = {
     ratingCount?: number;
     specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready';
     medicationInformation?: TMedicationInformation;
+    setRestaurantData?: React.Dispatch<SetStateAction<{
+        restaurantData: TRestaurantDataPrimary;
+        storefrontData: TStorefrontData;
+    }>>;
 };

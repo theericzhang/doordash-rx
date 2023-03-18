@@ -82,6 +82,7 @@ const MenuSectionItemsDivider = styled.hr`
 `;
 export default function MenuSection() {
     const RestaurantContext = useContext(StoreItemsContext);
+    const setRestaurantData = RestaurantContext?.setRestaurantData;
 
     return (
         <MenuSectionSection>
@@ -107,6 +108,7 @@ export default function MenuSection() {
                             lastOrdered={item?.lastOrdered}
                             specialDeliveryStatus={item?.specialDeliveryStatus}
                             medicationInformation={item?.medicationInformation}
+                            setRestaurantData={setRestaurantData}
                         />
                         <MenuSectionItemsDivider />
                     </Fragment>

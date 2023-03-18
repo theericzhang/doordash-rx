@@ -122,7 +122,7 @@ const ItemImage = styled(Image)`
 `;
 
 export default function MenuItem({
-    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
+    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation, setRestaurantData
 }: TStoreItem) {
     const dispatch = useAppDispatch();
     const priceFormatter = new Intl.NumberFormat('en-US', {
@@ -132,6 +132,11 @@ export default function MenuItem({
 
     // shimmer loading state
     const [isImageLoading, setIsImageLoading] = useState(true);
+
+    // function to set the specialDeliveryStatus of a menu item to 'refill-requested'
+    function setSpecialDeliveryStatusToRefillRequested() {
+
+    }
 
     return (
         <ItemWrapper
