@@ -152,13 +152,13 @@ const ItemCustomizationPanelFooter = styled.div<{ specialDeliveryStatus?: 'refil
     }
 `;
 
-const ItemCustomizationPanelAddToCartButton = styled.button`
+const ItemCustomizationPanelAddToCartButton = styled.button<{ specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested' | undefined }>`
     width: 220px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-red);
+    background-color: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'var(--quinary-gray)' : 'var(--secondary-red)')};
     border-radius: 20px;
     transition: ease 0.15s;
     transition-property: background-color;
@@ -168,10 +168,10 @@ const ItemCustomizationPanelAddToCartButton = styled.button`
     font-size: 16px;
 
     &:hover {
-        background-color: var(--tertiary-red);
-        transition: ease 0.15s;
-        transition-property: background-color;
-        cursor: pointer;
+        background-color: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'var(--quinary-gray)' : 'var(--tertiary-red)')};
+        transition: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'ease 0.15s')};
+        transition-property: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'background-color')};
+        cursor: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'not-allowed' : 'pointer')};
     }
 
     &:active {
@@ -399,6 +399,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                             :
                             <ItemCustomizationPanelAddToCartButton
                                 onClick={() => addToCartClickHandler(!!itemData.medicationInformation, itemData?.specialDeliveryStatus)}
+                                specialDeliveryStatus={itemData?.specialDeliveryStatus}
                             >
                                 {addToCartButtonText}
                             </ItemCustomizationPanelAddToCartButton>}
