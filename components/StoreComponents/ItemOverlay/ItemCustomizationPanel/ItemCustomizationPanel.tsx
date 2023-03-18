@@ -375,8 +375,6 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 </>}
                         </ItemCustomizationPanelContentWrapper>
                     </ItemCustomizationPanelMainWrapper>
-                    {/* // TODO: Footer needs to be variable - add different buttons like request refill, and have insurance information */}
-                    {/* // TODO: Find a way to detect if item in cart is a restricted item. If it is, make it so that the user can only remove the item when the ItemCusomizationPanel renders */}
                     <ItemCustomizationPanelFooter specialDeliveryStatus={itemData?.specialDeliveryStatus}>
                         {itemData?.specialDeliveryStatus
                             ? itemData?.specialDeliveryStatus === 'refill-ready' || itemData?.specialDeliveryStatus === 'refill-requested'
