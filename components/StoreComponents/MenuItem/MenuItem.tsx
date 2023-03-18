@@ -135,7 +135,7 @@ export default function MenuItem({
 
     // function to set the specialDeliveryStatus of a menu item to 'refill-requested'
     function setSpecialDeliveryStatusToRefillRequested() {
-
+        // set the delivery status here using setRestaurantData
     }
 
     return (
