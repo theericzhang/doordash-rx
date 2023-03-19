@@ -136,6 +136,24 @@ export default function MenuItem({
     // function to set the specialDeliveryStatus of a menu item to 'refill-requested'
     function setSpecialDeliveryStatusToRefillRequested() {
         // set the delivery status here using setRestaurantData
+        setRestaurantData!((prevData) => ({
+            restaurantData: { ...prevData.restaurantData },
+            storefrontData: {
+                ...prevData.storefrontData,
+                items: {
+                    ...prevData.storefrontData.items,
+                    itemsList: [
+                        ...prevData.storefrontData.items.itemsList.slice(0, itemID),
+                        {
+                            ...prevData.storefrontData.items.itemsList[itemID],
+                            specialDeliveryStatus: 'refill-requested'
+                        },
+                        ...prevData.storefrontData.items.itemsList.slice(itemID),
+                    ]
+                }
+            }
+        }
+        ));
     }
 
     return (
