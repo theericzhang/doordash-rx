@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { createContext, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import { restaurantList } from '../../components/datav2';
 import {
     TRestaurantDataPrimary, TStorefrontData, TStoreItemCategory
@@ -58,7 +58,7 @@ export default function Store({ restaurant, storeID }: TServerSideProps) {
                 />
                 {/* Insert Rest of the Store's components */}
                 {/* <StoreItemsContext.Provider value={restaurant.storefrontData.items}> */}
-                <StoreItemsContext.Provider value={{ restaurantData, setRestaurantData }}>
+                <StoreItemsContext.Provider value={useMemo(() => ({ restaurantData, setRestaurantData }), [restaurantData, setRestaurantData])}>
                     <QuickActions />
                 </StoreItemsContext.Provider>
                 <CartOverview isInCartSheet={false} />
