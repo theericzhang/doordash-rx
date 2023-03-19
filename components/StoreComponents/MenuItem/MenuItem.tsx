@@ -154,6 +154,9 @@ export default function MenuItem({
         }));
     }
 
+    // TODO: Pass this function down to the overlay component
+    specialDeliveryStatus === 'refill-ready' && setSpecialDeliveryStatusToRefillRequested();
+
     return (
         <ItemWrapper
             onClick={
