@@ -154,7 +154,9 @@ export default function MenuItem({
         }));
     }
 
+    console.log('value of specialDeliveryStatus', itemID, specialDeliveryStatus);
     // TODO: Pass this function down to the overlay component
+    // TODO: setter value is not caching from [slug]. look into why
     specialDeliveryStatus === 'refill-ready' && setSpecialDeliveryStatusToRefillRequested();
 
     return (
