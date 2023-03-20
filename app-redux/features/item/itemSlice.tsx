@@ -32,6 +32,8 @@ const itemSlice = createSlice({
             // TODO: IDEA: In MenuItem.tsx - create a new state from passed specialDeliveryStatus prop, then pass the state and setter to ItemCustomizationPanel
             // TODO: BETTER IDEA: Find a way to directly set StoreItem (Before it is passed as context)
             state.itemData.specialDeliveryStatus = 'refill-requested';
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            state.itemData.setSpecialDeliveryStatusToRefillRequested !== undefined && state.itemData.setSpecialDeliveryStatusToRefillRequested();
         }
     }
 });

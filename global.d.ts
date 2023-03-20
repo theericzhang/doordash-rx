@@ -80,4 +80,5 @@ export type TStoreItem = {
         restaurantData: TRestaurantDataPrimary;
         storefrontData: TStorefrontData;
     }>>;
+    setSpecialDeliveryStatusToRefillRequested?: Function;
 };

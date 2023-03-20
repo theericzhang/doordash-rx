@@ -157,7 +157,7 @@ export default function MenuItem({
     console.log('value of specialDeliveryStatus', itemID, specialDeliveryStatus);
     // TODO: Pass this function down to the overlay component
     // TODO: setter value is not caching from [slug]. look into why
-    specialDeliveryStatus === 'refill-ready' && setSpecialDeliveryStatusToRefillRequested();
+    // specialDeliveryStatus === 'refill-ready' && setSpecialDeliveryStatusToRefillRequested();
 
     return (
         <ItemWrapper
@@ -165,7 +165,7 @@ export default function MenuItem({
                 () => {
                     dispatch(toggleIsModalOpen());
                     dispatch(setModalData({
-                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
+                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation, setSpecialDeliveryStatusToRefillRequested
                     }));
                 }
             }
