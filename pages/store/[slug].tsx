@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { createContext, useMemo, useState } from 'react';
 import { restaurantList } from '../../components/datav2';
 import {
-    TRestaurantDataPrimary, TStorefrontData, TStoreItemCategory
+    TRestaurantDataPrimary, TStorefrontData
 } from '../../global';
 
 import StoreLayout from '../../components/Layouts/StoreLayout';
