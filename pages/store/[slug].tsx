@@ -20,10 +20,8 @@ type TServerSideProps = {
 };
 
 type TRestaurantContext = {
-    restaurantData: {
-        restaurantData: TRestaurantDataPrimary;
-        storefrontData: TStorefrontData;
-    };
+    restaurantData: TRestaurantDataPrimary;
+    storefrontData: TStorefrontData;
 };
 
 export const RestaurantContext = createContext<TRestaurantContext | null>(null);

@@ -87,14 +87,14 @@ export default function MenuSection() {
         <MenuSectionSection>
             <MenuSectionHeaderWrapper>
                 <MenuSectionHeader>
-                    {RestaurantConsumedContext?.restaurantData.storefrontData.items?.itemsName}
+                    {RestaurantConsumedContext?.storefrontData.items?.itemsName}
                 </MenuSectionHeader>
                 <MenuSectionSubheader>
-                    {RestaurantConsumedContext?.restaurantData.storefrontData.items?.itemsNameDesc}
+                    {RestaurantConsumedContext?.storefrontData.items?.itemsNameDesc}
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
-                {RestaurantConsumedContext?.restaurantData.storefrontData.items?.itemsList?.map((item) => (
+                {RestaurantConsumedContext?.storefrontData.items?.itemsList?.map((item) => (
                     <Fragment key={item.itemName}>
                         <MenuItem
                             itemID={item.itemID}
