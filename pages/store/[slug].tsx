@@ -64,7 +64,12 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     // fetch data pertinent to store here
     // Always note that the last property ctx.params?.slug MUST be the same as the name [slug], without square brackets.
     const storeID = ctx.params?.slug;
-    // const restaurant = restaurantList[Number(storeID) as keyof typeof restaurantList];
+    if (restaurantList[Number(storeID) as keyof typeof restaurantList] === undefined) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: { storeID },
     };
