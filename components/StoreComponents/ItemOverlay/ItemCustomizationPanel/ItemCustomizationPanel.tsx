@@ -9,13 +9,14 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import Image from 'next/image';
 import Shimmer from '../../../Placeholders/Shimmer';
 import { useAppDispatch, useAppSelector } from '../../../../app-redux/hooks';
-import { toggleIsModalOpen, setItemSpecialDeliveryStatusToRefillRequested } from '../../../../app-redux/features/item/itemSlice';
+import { toggleIsModalOpen } from '../../../../app-redux/features/item/itemSlice';
 import {
     addItemToCart,
     setStoreID,
     resetCartNewStore,
     setPageViewingStoreID,
 } from '../../../../app-redux/features/cart/cartSlice';
+import { setItemSpecialDeliveryStatusToRefillRequested } from '../../../../app-redux/features/restaurants/restaurantsSlice';
 
 import X from '../../../Icons/XIcon';
 import ThumbsUp from '../../../Icons/ThumbsUpIcon';
@@ -273,7 +274,12 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
             }
         } else if (specialDeliveryStatus === 'refill-ready') {
             // handle status update of refill-ready
-            dispatch(setItemSpecialDeliveryStatusToRefillRequested());
+            dispatch(setItemSpecialDeliveryStatusToRefillRequested(
+                {
+                    pageViewingStoreID: pageViewingStoreID as number,
+                    itemID: itemData.itemID,
+                }
+            ));
             // TODO: Figure out how to update instance of specialDeliveryStatus entirely -
             // TODO: Currently, the itemData that's being propogated to ItemCustomizationPanel.tsx is not the "main" value
             // TODO: The main value is StoreItemContext. See if I can get the specialDeliveryStatus in MenuItem.tsx to update
