@@ -884,7 +884,7 @@ export const restaurantList = {
                         },
                         price: 2,
                         description: 'RX # 49102895 • Dr. Stern',
-                        specialDeliveryStatus: 'delivery-ready',
+                        specialDeliveryStatus: 'delivery-ready' as 'delivery-ready',
                         medicationInformation: {
                             lastFilledDate: '02/28/2023',
                             quantity: 30,
@@ -913,7 +913,7 @@ export const restaurantList = {
                         },
                         price: 6.5,
                         description: 'RX # 29301845 • Dr. Stern',
-                        specialDeliveryStatus: 'refill-ready',
+                        specialDeliveryStatus: 'refill-ready' as 'refill-ready',
                         medicationInformation: {
                             lastFilledDate: '01/23/2023',
                             quantity: 30,
