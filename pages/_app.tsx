@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
     // const restaurantData = useAppSelector((state) => state.dataSlice.restaurantListData);
     // const restaurantCarouselData = useAppSelector((state) => state.dataSlice.restaurantCarousels);
     // fetch restaurant data
-    // TODO: I need to create a restaurantsList slice and add it to _app.tsx
+    // TODO: I need to create a restaurantsList slice that is a part of the global redux store, which has its global provider wrapper inside _app.tsx
     // TODO: The idea is to put all data that is passed in [slug].tsx and move it into a redux store
     // TODO: The slice would instantiate a copy of restaurantList from datav2.tsx
     // TODO: Then, on _app.tsx mount, the slice would provide information to each slug page. For example,
