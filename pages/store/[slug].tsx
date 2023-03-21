@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { createContext, useMemo, useState } from 'react';
+import { createContext } from 'react';
 import { restaurantList } from '../../components/datav2';
 import {
     TRestaurantDataPrimary, TStorefrontData
@@ -12,31 +12,26 @@ import CartOverview from '../../components/StoreComponents/CartOverviewComponent
 // eslint-disable-next-line import/no-cycle
 import QuickActions from '../../components/StoreComponents/QuickActionsComponent/QuickActions';
 
-import { useAppDispatch } from '../../app-redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../app-redux/hooks';
 import { setPageViewingStoreID } from '../../app-redux/features/cart/cartSlice';
 
 type TServerSideProps = {
-    restaurant: {
-        restaurantData: TRestaurantDataPrimary;
-        storefrontData: TStorefrontData;
-    };
     storeID: string;
 };
 
-type TStoreItemsContext = {
+type TRestaurantContext = {
     restaurantData: {
         restaurantData: TRestaurantDataPrimary;
         storefrontData: TStorefrontData;
     };
-    setRestaurantData: React.Dispatch<React.SetStateAction<{ restaurantData: TRestaurantDataPrimary; storefrontData: TStorefrontData; }>>;
 };
 
-export const StoreItemsContext = createContext<TStoreItemsContext | null>(null);
+export const RestaurantContext = createContext<TRestaurantContext | null>(null);
 
-export default function Store({ restaurant, storeID }: TServerSideProps) {
+export default function Store({ storeID }: TServerSideProps) {
     const dispatch = useAppDispatch();
     dispatch(setPageViewingStoreID(Number(storeID)));
-    const [restaurantData, setRestaurantData] = useState(restaurant);
+    const restaurant = useAppSelector((state) => state.restaurantSlice[Number(storeID) as keyof typeof restaurantList]);
     return (
         <>
             <Head>
@@ -58,9 +53,9 @@ export default function Store({ restaurant, storeID }: TServerSideProps) {
                 />
                 {/* Insert Rest of the Store's components */}
                 {/* <StoreItemsContext.Provider value={restaurant.storefrontData.items}> */}
-                <StoreItemsContext.Provider value={useMemo(() => ({ restaurantData, setRestaurantData }), [restaurantData, setRestaurantData])}>
+                <RestaurantContext.Provider value={restaurant}>
                     <QuickActions />
-                </StoreItemsContext.Provider>
+                </RestaurantContext.Provider>
                 <CartOverview isInCartSheet={false} />
             </StoreLayout>
         </>
@@ -71,8 +66,8 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     // fetch data pertinent to store here
     // Always note that the last property ctx.params?.slug MUST be the same as the name [slug], without square brackets.
     const storeID = ctx.params?.slug;
-    const restaurant = restaurantList[Number(storeID) as keyof typeof restaurantList];
+    // const restaurant = restaurantList[Number(storeID) as keyof typeof restaurantList];
     return {
-        props: { restaurant, storeID },
+        props: { storeID },
     };
 }

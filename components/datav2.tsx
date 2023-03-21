@@ -29,7 +29,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Garlic Knots',
                         image: {
                             src: '/images/65341/GarlicKnots.webp',
@@ -41,7 +41,7 @@ export const restaurantList = {
                         ratingCount: 89,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Grandma Slice',
                         image: {
                             src: '/images/65341/GrandmaSlice.webp',
@@ -54,7 +54,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Margherita Slice',
                         image: {
                             src: '/images/65341/MargheritaSlice.webp',
@@ -66,7 +66,7 @@ export const restaurantList = {
                         ratingCount: 92,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Cheese Slice',
                         image: {
                             src: '/images/65341/CheeseSlice.webp',
@@ -111,7 +111,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: '12 course Omakase',
                         image: {
                             src: '/images/1243431/12course.webp',
@@ -124,7 +124,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Sake Pairing',
                         image: {
                             src: '/images/1243431/sakePairing.webp',
@@ -137,7 +137,7 @@ export const restaurantList = {
                         ratingCount: 80,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Chicken Skin Crisps',
                         image: {
                             src: '/images/1243431/ChickenSkinCrisps.webp',
@@ -148,7 +148,7 @@ export const restaurantList = {
                         ratingCount: 82,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Buckwheat Custard',
                         image: {
                             src: '/images/1243431/BuckwheatCustard.webp',
@@ -192,7 +192,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Banana Turmeric Lassi',
                         image: {
                             src: '/images/18764431/BananaTurmericLassi.webp',
@@ -205,7 +205,7 @@ export const restaurantList = {
                         ratingCount: 126,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Cardamom Mango Lassi',
                         image: {
                             src: '/images/18764431/CardamomMangoLassi.webp',
@@ -219,7 +219,7 @@ export const restaurantList = {
                         ratingCount: 102,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Cayenne Tamarind Lassi',
                         image: {
                             src: '/images/18764431/CayenneTamarindLassi.webp',
@@ -232,7 +232,7 @@ export const restaurantList = {
                         ratingCount: 98,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Peppercorn Berry Lassi',
                         image: {
                             src: '/images/18764431/PepperCornBerryLassi.webp',
@@ -245,7 +245,7 @@ export const restaurantList = {
                         ratingCount: 76,
                     },
                     {
-                    // itemID: 5,
+                        itemID: 4,
                         itemName: 'Saag Paneer',
                         image: {
                             src: '/images/18764431/SaagPaneer.webp',
@@ -257,7 +257,7 @@ export const restaurantList = {
                         ratingCount: 133,
                     },
                     {
-                    // itemID: 6,
+                        itemID: 5,
                         itemName: 'Chick’n Tikka Street Wrap',
                         image: {
                             src: '/images/18764431/ChicknTikkaStreetWrap.webp',
@@ -303,7 +303,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Mini Samosas',
                         image: {
                             src: '/images/98441/MiniSamosas.webp',
@@ -316,7 +316,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Paneer Tikka Masala',
                         image: {
                             src: '/images/98441/PaneerTikkaMasala.webp',
@@ -329,7 +329,7 @@ export const restaurantList = {
                         ratingCount: 150,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Vada Pav',
                         image: {
                             src: '/images/98441/VadaPav.webp',
@@ -343,7 +343,7 @@ export const restaurantList = {
                         ratingCount: 100,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Papdi Chaat',
                         image: {
                             src: '/images/98441/PapdiChaat.webp',
@@ -356,7 +356,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 5,
+                        itemID: 4,
                         itemName: 'Pani Puri',
                         image: {
                             src: '/images/98441/PaniPuri.webp',
@@ -403,7 +403,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Thai Iced Tea',
                         image: {
                             src: '/images/12356667/ThaiIcedTea.webp',
@@ -417,7 +417,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Guay Tiow Kua Gai',
                         image: {
                             src: '/images/12356667/GuayTiowKuaGai.webp',
@@ -430,7 +430,7 @@ export const restaurantList = {
                         ratingCount: 150,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Mussamun Neur',
                         image: {
                             src: '/images/12356667/MussamunNeur.webp',
@@ -444,7 +444,7 @@ export const restaurantList = {
                         ratingCount: 100,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Kai Jiew',
                         image: {
                             src: '/images/12356667/KaiJiew.webp',
@@ -457,7 +457,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 5,
+                        itemID: 4,
                         itemName: 'Kao Soi',
                         image: {
                             src: '/images/12356667/KaoSoi.webp',
@@ -471,7 +471,7 @@ export const restaurantList = {
                         ratingCount: 130,
                     },
                     {
-                    // itemID: 6,
+                        itemID: 5,
                         itemName: 'Gai Gra Pao',
                         image: {
                             src: '/images/12356667/GaiGraPao.webp',
@@ -518,7 +518,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Yum Sum-o',
                         image: {
                             src: '/images/334624/YumSumO.webp',
@@ -530,7 +530,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Yum Tawai',
                         image: {
                             src: '/images/334624/YumTawai.webp',
@@ -542,7 +542,7 @@ export const restaurantList = {
                         ratingCount: 231,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Gaeng Massaman Gae',
                         image: {
                             src: '/images/334624/MassamanGae.webp',
@@ -555,7 +555,7 @@ export const restaurantList = {
                         ratingCount: 180,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Squid & Pork Jowl',
                         image: {
                             src: '/images/334624/PorkSquidJowl.webp',
@@ -601,7 +601,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Baja Fish Taco',
                         image: {
                             src: '/images/120985/BajaFishTaco.webp',
@@ -614,7 +614,7 @@ export const restaurantList = {
                         ratingCount: 528,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Chicharron Pollo',
                         image: {
                             src: '/images/120985/ChicharronPollo.webp',
@@ -626,7 +626,7 @@ export const restaurantList = {
                         ratingCount: 98,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Papito',
                         image: {
                             src: '/images/120985/Papito.webp',
@@ -638,7 +638,7 @@ export const restaurantList = {
                         ratingCount: 105,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Yuca Frita',
                         image: {
                             src: '/images/120985/YucaFrita.webp',
@@ -683,7 +683,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Fried Chicken Sandwich',
                         image: {
                             src: '/images/7498723/FriedChickenSandwich.webp',
@@ -696,7 +696,7 @@ export const restaurantList = {
                         ratingCount: 120,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Veggie Burger',
                         image: {
                             src: '/images/7498723/VeggieBurger.webp',
@@ -709,7 +709,7 @@ export const restaurantList = {
                         ratingCount: 80,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Super Burger',
                         image: {
                             src: '/images/7498723/SuperBurger.webp',
@@ -721,7 +721,7 @@ export const restaurantList = {
                         ratingCount: 82,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'Truffle Burger',
                         image: {
                             src: '/images/7498723/TruffleBurger.webp',
@@ -733,7 +733,7 @@ export const restaurantList = {
                         ratingCount: 7,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 4,
                         itemName: 'Garlic Fries',
                         image: {
                             src: '/images/7498723/GarlicFries.webp',
@@ -778,7 +778,7 @@ export const restaurantList = {
                 itemsNameDesc: 'The most commonly ordered items and dishes from this store',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Matcha',
                         image: {
                             src: '/images/986234892/Matcha.webp',
@@ -790,7 +790,7 @@ export const restaurantList = {
                         ratingCount: 6,
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Overnight Oats',
                         image: {
                             src: '/images/986234892/OvernightOats.webp',
@@ -804,7 +804,7 @@ export const restaurantList = {
                         ratingCount: 10,
                     },
                     {
-                    // itemID: 3,
+                        itemID: 2,
                         itemName: 'Poundcake',
                         image: {
                             src: '/images/986234892/PoundCake.webp',
@@ -816,7 +816,7 @@ export const restaurantList = {
                         ratingCount: 82,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 3,
                         itemName: 'New Orleans-style Iced Coffee',
                         image: {
                             src: '/images/986234892/NewOrleansIcedCoffee.webp',
@@ -829,7 +829,7 @@ export const restaurantList = {
                         ratingCount: 34,
                     },
                     {
-                    // itemID: 4,
+                        itemID: 4,
                         itemName: 'Caffè Latte',
                         image: {
                             src: '/images/986234892/CaffeLatte.webp',
@@ -876,7 +876,7 @@ export const restaurantList = {
                 itemsNameDesc: 'DoorDash can now deliver filled prescriptions to you.',
                 itemsList: [
                     {
-                    // itemID: 1,
+                        itemID: 0,
                         itemName: 'Lisinopril (Zestril) 10 mg',
                         image: {
                             src: '/images/1463256/MedicationIcon.webp',
@@ -905,7 +905,7 @@ export const restaurantList = {
                         }
                     },
                     {
-                    // itemID: 2,
+                        itemID: 1,
                         itemName: 'Vitamin D2 (Drisdol) 3mg',
                         image: {
                             src: '/images/1463256/MedicationIcon.webp',

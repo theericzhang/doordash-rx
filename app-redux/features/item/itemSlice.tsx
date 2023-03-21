@@ -28,7 +28,7 @@ const itemSlice = createSlice({
             // Dispatch a request
             state.itemData.specialDeliveryStatus = 'refill-requested';
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            state.itemData.setSpecialDeliveryStatusToRefillRequested !== undefined && state.itemData.setSpecialDeliveryStatusToRefillRequested();
+            // state.itemData.setSpecialDeliveryStatusToRefillRequested !== undefined && state.itemData.setSpecialDeliveryStatusToRefillRequested();
         }
     }
 });
