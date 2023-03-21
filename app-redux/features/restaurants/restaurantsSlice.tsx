@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TRestaurantList } from '../../../global';
 import { restaurantList } from '../../../components/datav2';
 
+// TODO: Figure out how to type restaurantList properly
+// TODO: itemID is not avail on every restaurant, but used in cartSlice??
 const initialState: TRestaurantList = restaurantList;
 
 const restaurantsSlice = createSlice({
