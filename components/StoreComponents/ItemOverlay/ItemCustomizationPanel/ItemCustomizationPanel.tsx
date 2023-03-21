@@ -9,7 +9,7 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import Image from 'next/image';
 import Shimmer from '../../../Placeholders/Shimmer';
 import { useAppDispatch, useAppSelector } from '../../../../app-redux/hooks';
-import { toggleIsModalOpen } from '../../../../app-redux/features/item/itemSlice';
+import { toggleIsModalOpen, setModalData } from '../../../../app-redux/features/item/itemSlice';
 import {
     addItemToCart,
     setStoreID,
@@ -280,11 +280,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                     itemID: itemData.itemID,
                 }
             ));
-            // TODO: Figure out how to update instance of specialDeliveryStatus entirely -
-            // TODO: Currently, the itemData that's being propogated to ItemCustomizationPanel.tsx is not the "main" value
-            // TODO: The main value is StoreItemContext. See if I can get the specialDeliveryStatus in MenuItem.tsx to update
-            // TODO: IDEA: In MenuItem.tsx - create a new state from passed specialDeliveryStatus prop, then pass the state and setter to ItemCustomizationPanel
-            // TODO: BETTER IDEA: Find a way to directly set StoreItem (Before it is passed as context)
+            // TODO: Pull in the setItemSpecialDeliveryStatusToRefill from the other slice, itemSlice, and use it.
         }
     }
 
