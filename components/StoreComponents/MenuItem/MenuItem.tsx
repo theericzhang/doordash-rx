@@ -133,6 +133,32 @@ export default function MenuItem({
     // shimmer loading state
     const [isImageLoading, setIsImageLoading] = useState(true);
 
+    // function to set the specialDeliveryStatus of a menu item to 'refill-requested'
+    // function setSpecialDeliveryStatusToRefillRequested() {
+    //     setRestaurantData!((prevData) => ({
+    //         ...prevData,
+    //         storefrontData: {
+    //             ...prevData.storefrontData,
+    //             items: {
+    //                 ...prevData.storefrontData.items,
+    //                 itemsList: [
+    //                     ...prevData.storefrontData.items.itemsList.slice(0, itemID),
+    //                     {
+    //                         ...prevData.storefrontData.items.itemsList[itemID],
+    //                         specialDeliveryStatus: 'refill-requested'
+    //                     },
+    //                     ...prevData.storefrontData.items.itemsList.slice(itemID + 1),
+    //                 ]
+    //             }
+    //         }
+    //     }));
+    // }
+
+    console.log('value of specialDeliveryStatus', itemID, specialDeliveryStatus);
+    // TODO: Pass this function down to the overlay component
+    // TODO: setter value is not caching from [slug]. look into why
+    // specialDeliveryStatus === 'refill-ready' && setSpecialDeliveryStatusToRefillRequested();
+
     return (
         <ItemWrapper
             onClick={

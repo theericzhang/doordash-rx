@@ -46,22 +46,6 @@ export type TStoreItemCategory = {
     itemsList: TStoreItem[];
 };
 
-export type TMedicationInformation = {
-    lastFilledDate: string;
-    quantity: number;
-    refills: number;
-    patientInformation: {
-        patientName: string;
-        patientAddress: string;
-        patientInsurance: {
-            insurer: string;
-            memberID: number;
-        };
-    };
-    instructions: string;
-    medicalImportantInformation: string[];
-};
-
 export type TStoreItem = {
     itemID: number;
     image: {
@@ -76,4 +60,20 @@ export type TStoreItem = {
     ratingCount?: number;
     specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready';
     medicationInformation?: TMedicationInformation;
+};
+
+export type TMedicationInformation = {
+    lastFilledDate: string;
+    quantity: number;
+    refills: number;
+    patientInformation: {
+        patientName: string;
+        patientAddress: string;
+        patientInsurance: {
+            insurer: string;
+            memberID: number;
+        };
+    };
+    instructions: string;
+    medicalImportantInformation: string[];
 };

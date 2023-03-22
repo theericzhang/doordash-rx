@@ -3,6 +3,7 @@ import cartReducers from './features/cart/cartSlice';
 import deliveryReducers from './features/delivery/deliverySlice';
 import itemReducers from './features/item/itemSlice';
 import dataReducers from './features/data/dataSlice';
+import restaurantReducers from './features/restaurants/restaurantsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         deliverySlice: deliveryReducers,
         itemSlice: itemReducers,
         dataSlice: dataReducers,
+        restaurantSlice: restaurantReducers,
     }
 });
 

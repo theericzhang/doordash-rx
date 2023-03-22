@@ -36,7 +36,7 @@ const BadgeBannerSpan = styled.span`
 `;
 
 type TBadgeBanner = {
-    specialDeliveryStatus?: string;
+    specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready';
 };
 
 export default function BadgeBanner({ specialDeliveryStatus }: TBadgeBanner) {

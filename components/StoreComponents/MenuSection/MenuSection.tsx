@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { Fragment, useContext } from 'react';
 import MenuItem from '../MenuItem/MenuItem';
-import { StoreItemsContext } from '../../../pages/store/[slug]';
+import { RestaurantContext } from '../../../pages/store/[slug]';
 
 const MenuSectionSection = styled.section`
     display: flex;
@@ -81,23 +81,23 @@ const MenuSectionItemsDivider = styled.hr`
     }
 `;
 export default function MenuSection() {
-    const restaurantMenu = useContext(StoreItemsContext);
+    const RestaurantConsumedContext = useContext(RestaurantContext);
 
     return (
         <MenuSectionSection>
             <MenuSectionHeaderWrapper>
                 <MenuSectionHeader>
-                    {restaurantMenu?.itemsName}
+                    {RestaurantConsumedContext?.storefrontData.items?.itemsName}
                 </MenuSectionHeader>
                 <MenuSectionSubheader>
-                    {restaurantMenu?.itemsNameDesc}
+                    {RestaurantConsumedContext?.storefrontData.items?.itemsNameDesc}
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
-                {restaurantMenu?.itemsList?.map((item, index) => (
+                {RestaurantConsumedContext?.storefrontData.items?.itemsList?.map((item) => (
                     <Fragment key={item.itemName}>
                         <MenuItem
-                            itemID={index}
+                            itemID={item.itemID}
                             image={item.image}
                             itemName={item.itemName}
                             price={item.price}

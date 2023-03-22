@@ -9,13 +9,14 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import Image from 'next/image';
 import Shimmer from '../../../Placeholders/Shimmer';
 import { useAppDispatch, useAppSelector } from '../../../../app-redux/hooks';
-import { toggleIsModalOpen } from '../../../../app-redux/features/item/itemSlice';
+import { toggleIsModalOpen, setItemSpecialDeliveryStatusToRefillRequestedCustomization } from '../../../../app-redux/features/item/itemSlice';
 import {
     addItemToCart,
     setStoreID,
     resetCartNewStore,
     setPageViewingStoreID,
 } from '../../../../app-redux/features/cart/cartSlice';
+import { setItemSpecialDeliveryStatusToRefillRequested } from '../../../../app-redux/features/restaurants/restaurantsSlice';
 
 import X from '../../../Icons/XIcon';
 import ThumbsUp from '../../../Icons/ThumbsUpIcon';
@@ -152,13 +153,13 @@ const ItemCustomizationPanelFooter = styled.div<{ specialDeliveryStatus?: 'refil
     }
 `;
 
-const ItemCustomizationPanelAddToCartButton = styled.button`
+const ItemCustomizationPanelAddToCartButton = styled.button<{ specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested' | undefined }>`
     width: 220px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-red);
+    background-color: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'var(--quinary-gray)' : 'var(--secondary-red)')};
     border-radius: 20px;
     transition: ease 0.15s;
     transition-property: background-color;
@@ -168,16 +169,41 @@ const ItemCustomizationPanelAddToCartButton = styled.button`
     font-size: 16px;
 
     &:hover {
-        background-color: var(--tertiary-red);
-        transition: ease 0.15s;
-        transition-property: background-color;
-        cursor: pointer;
+        background-color: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'var(--quinary-gray)' : 'var(--tertiary-red)')};
+        transition: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'ease 0.15s')};
+        transition-property: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'background-color')};
+        cursor: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'not-allowed' : 'pointer')};
     }
 
     &:active {
-        transition: 0.15s ease;
-        transition-property: background-color;
-        background-color: var(--quaternary-red);
+        transition: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'ease 0.15s')};
+        transition-property: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? 'unset' : 'background-color')};
+        background-color: ${(props) => (props?.specialDeliveryStatus === 'refill-requested' ? '' : 'var(--tertiary-red)')};
+    }
+
+    @media screen and (max-width: 480px) {
+        width: 192px;
+        padding: 0 5px;
+    }
+`;
+
+const ItemCustomizationPanelAlreadyAddedButton = styled.button`
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--quinary-gray);
+    border-radius: 20px;
+    transition: ease 0.15s;
+    transition-property: background-color;
+    padding: 0 25px;
+    color: var(--primary-white);
+    font-weight: 500;
+    font-size: 16px;
+
+    &:hover {
+        cursor: not-allowed;
     }
 
     @media screen and (max-width: 480px) {
@@ -211,32 +237,80 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
     });
 
     const cart = useAppSelector((state) => state.cartSlice.cart);
-    console.log(cart);
+    let currentItemInCartRestricted = false;
 
-    function addToCartClickHandler(isRestrictedItem: boolean) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of cart) {
+        if ((cartStoreID === pageViewingStoreID) && item?.isRestrictedItem && !!itemData?.specialDeliveryStatus && (item?.itemID === itemData?.itemID)) {
+            currentItemInCartRestricted = true;
+            break;
+        }
+    }
+
+    function addToCartClickHandler(isRestrictedItem: boolean, specialDeliveryStatus: 'delivery-ready' | 'refill-ready' | 'refill-requested' | undefined) {
         const cartPayload = {
             itemID: itemData.itemID,
             quantity: itemCounter,
             isRestrictedItem,
         };
-        // if the cart matches the currently viewed page's ID
-        if (cartStoreID === pageViewingStoreID) {
-            dispatch(addItemToCart(cartPayload));
-            dispatch(toggleIsModalOpen());
+        if (specialDeliveryStatus === 'delivery-ready' || !specialDeliveryStatus) {
+            // if the cart matches the currently viewed page's ID
+            if (cartStoreID === pageViewingStoreID) {
+                setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
+                dispatch(toggleIsModalOpen());
+            }
+            // if the cart store is not defined meaning no items in cart, set the viewingID and then add
+            else if (cartStoreID === undefined && !!pageViewingStoreID) {
+                dispatch(setPageViewingStoreID(pageViewingStoreID));
+                dispatch(setStoreID(pageViewingStoreID));
+                setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
+                dispatch(toggleIsModalOpen());
+            }
+            // if the cart's storeID doesn't match the viewingID, then start a new cart.
+            else if (cartStoreID !== pageViewingStoreID && !!pageViewingStoreID) {
+                dispatch(resetCartNewStore(pageViewingStoreID));
+                setTimeout(() => { dispatch(addItemToCart(cartPayload)); }, 250);
+                dispatch(toggleIsModalOpen());
+            }
+        } else if (specialDeliveryStatus === 'refill-ready') {
+            // handle status update of refill-ready
+            dispatch(setItemSpecialDeliveryStatusToRefillRequested(
+                {
+                    pageViewingStoreID: pageViewingStoreID as number,
+                    itemID: itemData.itemID,
+                }
+            ));
+            dispatch(setItemSpecialDeliveryStatusToRefillRequestedCustomization());
         }
-        // if the cart store is not defined meaning no items in cart, set the viewingID and then add
-        else if (cartStoreID === undefined && !!pageViewingStoreID) {
-            dispatch(setPageViewingStoreID(pageViewingStoreID));
-            dispatch(setStoreID(pageViewingStoreID));
-            dispatch(addItemToCart(cartPayload));
-            dispatch(toggleIsModalOpen());
-        }
-        // if the cart's storeID doesn't match the viewingID, then start a new cart.
-        else if (cartStoreID !== pageViewingStoreID && !!pageViewingStoreID) {
-            dispatch(resetCartNewStore(pageViewingStoreID));
-            dispatch(addItemToCart(cartPayload));
-            dispatch(toggleIsModalOpen());
-        }
+    }
+
+    let addToCartButtonText: string;
+
+    switch (itemData?.specialDeliveryStatus) {
+    case 'delivery-ready':
+        addToCartButtonText = `Add to Cart -
+            ${' '}
+            ${priceFormatter.format(
+        // eslint-disable-next-line indent
+                itemData.price * itemCounter
+        // eslint-disable-next-line indent
+            )}`;
+        break;
+    case 'refill-ready':
+        addToCartButtonText = 'Request a refill';
+        break;
+    case 'refill-requested':
+        addToCartButtonText = 'Refill requested';
+        break;
+    default:
+        addToCartButtonText = `Add to Cart -
+            ${' '}
+            ${priceFormatter.format(
+        // eslint-disable-next-line indent
+                itemData.price * itemCounter
+        // eslint-disable-next-line indent
+            )}`;
+        break;
     }
 
     return (
@@ -308,7 +382,6 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 </>}
                         </ItemCustomizationPanelContentWrapper>
                     </ItemCustomizationPanelMainWrapper>
-                    {/* // TODO: Footer needs to be variable - add different buttons like request refill, and have insurance information */}
                     <ItemCustomizationPanelFooter specialDeliveryStatus={itemData?.specialDeliveryStatus}>
                         {itemData?.specialDeliveryStatus
                             ? itemData?.specialDeliveryStatus === 'refill-ready' || itemData?.specialDeliveryStatus === 'refill-requested'
@@ -324,15 +397,17 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                                 // eslint-disable-next-line react/jsx-indent-props
                                 setItemCounter={setItemCounter}
                             />}
-                        <ItemCustomizationPanelAddToCartButton
-                            onClick={() => addToCartClickHandler(!!itemData.medicationInformation)}
-                        >
-                            Add to Cart -
-                            {' '}
-                            {priceFormatter.format(
-                                itemData.price * itemCounter
-                            )}
-                        </ItemCustomizationPanelAddToCartButton>
+                        {currentItemInCartRestricted ?
+                            <ItemCustomizationPanelAlreadyAddedButton>
+                                {itemData?.specialDeliveryStatus === 'refill-requested' ? 'Refill requested' : 'Already in cart'}
+                            </ItemCustomizationPanelAlreadyAddedButton>
+                            :
+                            <ItemCustomizationPanelAddToCartButton
+                                onClick={() => addToCartClickHandler(!!itemData.medicationInformation, itemData?.specialDeliveryStatus)}
+                                specialDeliveryStatus={itemData?.specialDeliveryStatus}
+                            >
+                                {addToCartButtonText}
+                            </ItemCustomizationPanelAddToCartButton>}
                     </ItemCustomizationPanelFooter>
                 </ItemCustomizationPanelWrapper>
             )}

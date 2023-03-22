@@ -74,7 +74,7 @@ const MedicalLabelInfoLI = styled.li`
 type TMedicalItemDetails = {
     primaryDescription?: string;
     medicationInformation?: TMedicationInformation;
-    specialDeliveryStatus: string;
+    specialDeliveryStatus?: 'refill-ready' | 'refill-requested' | 'delivery-ready';
 };
 
 export default function MedicalItemDetails({ primaryDescription, medicationInformation, specialDeliveryStatus }: TMedicalItemDetails) {

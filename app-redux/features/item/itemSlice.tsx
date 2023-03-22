@@ -23,9 +23,17 @@ const itemSlice = createSlice({
         },
         setModalData: (state, action: PayloadAction<TStoreItem>) => {
             state.itemData = action.payload;
+        },
+        setItemSpecialDeliveryStatusToRefillRequestedCustomization: (state) => {
+            // Dispatch a request
+            state.itemData.specialDeliveryStatus = 'refill-requested';
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            // state.itemData.setSpecialDeliveryStatusToRefillRequested !== undefined && state.itemData.setSpecialDeliveryStatusToRefillRequested();
         }
     }
 });
 
-export const { toggleIsModalOpen, setIsModalOpenFalse, setModalData } = itemSlice.actions;
+export const {
+    toggleIsModalOpen, setIsModalOpenFalse, setModalData, setItemSpecialDeliveryStatusToRefillRequestedCustomization
+} = itemSlice.actions;
 export default itemSlice.reducer;
