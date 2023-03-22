@@ -1,9 +1,9 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { createContext, useMemo, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { restaurantList } from '../../components/datav2';
 import {
-    TRestaurantDataPrimary, TStorefrontData, TStoreItemCategory
+    TRestaurantDataPrimary, TStorefrontData
 } from '../../global';
 
 import StoreLayout from '../../components/Layouts/StoreLayout';
@@ -12,31 +12,35 @@ import CartOverview from '../../components/StoreComponents/CartOverviewComponent
 // eslint-disable-next-line import/no-cycle
 import QuickActions from '../../components/StoreComponents/QuickActionsComponent/QuickActions';
 
-import { useAppDispatch } from '../../app-redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../app-redux/hooks';
 import { setPageViewingStoreID } from '../../app-redux/features/cart/cartSlice';
 
 type TServerSideProps = {
-    restaurant: {
-        restaurantData: TRestaurantDataPrimary;
-        storefrontData: TStorefrontData;
-    };
     storeID: string;
 };
 
-type TStoreItemsContext = {
-    restaurantData: {
-        restaurantData: TRestaurantDataPrimary;
-        storefrontData: TStorefrontData;
-    };
-    setRestaurantData: React.Dispatch<React.SetStateAction<{ restaurantData: TRestaurantDataPrimary; storefrontData: TStorefrontData; }>>;
+type TRestaurantContext = {
+    restaurantData: TRestaurantDataPrimary;
+    storefrontData: TStorefrontData;
 };
 
-export const StoreItemsContext = createContext<TStoreItemsContext | null>(null);
+export const RestaurantContext = createContext<TRestaurantContext | null>(null);
 
-export default function Store({ restaurant, storeID }: TServerSideProps) {
+export default function Store({ storeID }: TServerSideProps) {
+    // Set the storeID once the page mounts
     const dispatch = useAppDispatch();
     dispatch(setPageViewingStoreID(Number(storeID)));
-    const [restaurantData, setRestaurantData] = useState(restaurant);
+
+    // grab the restaurant/store's data from global redux store, create a state variable and set it to the data
+    // Cannot pass restaurant directly as context since context will not trigger a re-render if it is updated, as per design
+    const restaurant = useAppSelector((state) => state.restaurantSlice[Number(storeID) as keyof typeof restaurantList]);
+    const [restaurantState, setRestaurantState] = useState(restaurant);
+
+    // update restaurantState if the value of restaurant changes. expect restaurant to change when specialDeliveryStatus updates
+    useEffect(() => {
+        setRestaurantState(restaurant);
+    }, [restaurant]);
+
     return (
         <>
             <Head>
@@ -58,9 +62,9 @@ export default function Store({ restaurant, storeID }: TServerSideProps) {
                 />
                 {/* Insert Rest of the Store's components */}
                 {/* <StoreItemsContext.Provider value={restaurant.storefrontData.items}> */}
-                <StoreItemsContext.Provider value={useMemo(() => ({ restaurantData, setRestaurantData }), [restaurantData, setRestaurantData])}>
+                <RestaurantContext.Provider value={restaurantState}>
                     <QuickActions />
-                </StoreItemsContext.Provider>
+                </RestaurantContext.Provider>
                 <CartOverview isInCartSheet={false} />
             </StoreLayout>
         </>
@@ -71,8 +75,13 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     // fetch data pertinent to store here
     // Always note that the last property ctx.params?.slug MUST be the same as the name [slug], without square brackets.
     const storeID = ctx.params?.slug;
-    const restaurant = restaurantList[Number(storeID) as keyof typeof restaurantList];
+    if (restaurantList[Number(storeID) as keyof typeof restaurantList] === undefined) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
-        props: { restaurant, storeID },
+        props: { storeID },
     };
 }

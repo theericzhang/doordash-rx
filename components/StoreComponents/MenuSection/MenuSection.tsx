@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { Fragment, useContext } from 'react';
 import MenuItem from '../MenuItem/MenuItem';
-import { StoreItemsContext } from '../../../pages/store/[slug]';
+import { RestaurantContext } from '../../../pages/store/[slug]';
 
 const MenuSectionSection = styled.section`
     display: flex;
@@ -81,24 +81,23 @@ const MenuSectionItemsDivider = styled.hr`
     }
 `;
 export default function MenuSection() {
-    const RestaurantContext = useContext(StoreItemsContext);
-    const setRestaurantData = RestaurantContext?.setRestaurantData;
+    const RestaurantConsumedContext = useContext(RestaurantContext);
 
     return (
         <MenuSectionSection>
             <MenuSectionHeaderWrapper>
                 <MenuSectionHeader>
-                    {RestaurantContext?.restaurantData.storefrontData.items?.itemsName}
+                    {RestaurantConsumedContext?.storefrontData.items?.itemsName}
                 </MenuSectionHeader>
                 <MenuSectionSubheader>
-                    {RestaurantContext?.restaurantData.storefrontData.items?.itemsNameDesc}
+                    {RestaurantConsumedContext?.storefrontData.items?.itemsNameDesc}
                 </MenuSectionSubheader>
             </MenuSectionHeaderWrapper>
             <MenuSectionItemsWrapper>
-                {RestaurantContext?.restaurantData.storefrontData.items?.itemsList?.map((item, index) => (
+                {RestaurantConsumedContext?.storefrontData.items?.itemsList?.map((item) => (
                     <Fragment key={item.itemName}>
                         <MenuItem
-                            itemID={index}
+                            itemID={item.itemID}
                             image={item.image}
                             itemName={item.itemName}
                             price={item.price}
@@ -108,7 +107,6 @@ export default function MenuSection() {
                             lastOrdered={item?.lastOrdered}
                             specialDeliveryStatus={item?.specialDeliveryStatus}
                             medicationInformation={item?.medicationInformation}
-                            setRestaurantData={setRestaurantData}
                         />
                         <MenuSectionItemsDivider />
                     </Fragment>

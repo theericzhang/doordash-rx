@@ -122,7 +122,7 @@ const ItemImage = styled(Image)`
 `;
 
 export default function MenuItem({
-    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation, setRestaurantData
+    itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
 }: TStoreItem) {
     const dispatch = useAppDispatch();
     const priceFormatter = new Intl.NumberFormat('en-US', {
@@ -134,25 +134,25 @@ export default function MenuItem({
     const [isImageLoading, setIsImageLoading] = useState(true);
 
     // function to set the specialDeliveryStatus of a menu item to 'refill-requested'
-    function setSpecialDeliveryStatusToRefillRequested() {
-        setRestaurantData!((prevData) => ({
-            ...prevData,
-            storefrontData: {
-                ...prevData.storefrontData,
-                items: {
-                    ...prevData.storefrontData.items,
-                    itemsList: [
-                        ...prevData.storefrontData.items.itemsList.slice(0, itemID),
-                        {
-                            ...prevData.storefrontData.items.itemsList[itemID],
-                            specialDeliveryStatus: 'refill-requested'
-                        },
-                        ...prevData.storefrontData.items.itemsList.slice(itemID + 1),
-                    ]
-                }
-            }
-        }));
-    }
+    // function setSpecialDeliveryStatusToRefillRequested() {
+    //     setRestaurantData!((prevData) => ({
+    //         ...prevData,
+    //         storefrontData: {
+    //             ...prevData.storefrontData,
+    //             items: {
+    //                 ...prevData.storefrontData.items,
+    //                 itemsList: [
+    //                     ...prevData.storefrontData.items.itemsList.slice(0, itemID),
+    //                     {
+    //                         ...prevData.storefrontData.items.itemsList[itemID],
+    //                         specialDeliveryStatus: 'refill-requested'
+    //                     },
+    //                     ...prevData.storefrontData.items.itemsList.slice(itemID + 1),
+    //                 ]
+    //             }
+    //         }
+    //     }));
+    // }
 
     console.log('value of specialDeliveryStatus', itemID, specialDeliveryStatus);
     // TODO: Pass this function down to the overlay component
@@ -165,7 +165,7 @@ export default function MenuItem({
                 () => {
                     dispatch(toggleIsModalOpen());
                     dispatch(setModalData({
-                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation, setSpecialDeliveryStatusToRefillRequested
+                        itemID, image, itemName, price, description, ratingCount, ratingPercentage, lastOrdered, specialDeliveryStatus, medicationInformation
                     }));
                 }
             }
