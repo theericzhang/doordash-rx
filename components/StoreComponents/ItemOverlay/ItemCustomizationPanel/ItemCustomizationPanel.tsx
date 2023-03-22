@@ -281,7 +281,6 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                 }
             ));
             dispatch(setItemSpecialDeliveryStatusToRefillRequestedCustomization());
-            // TODO: Pull in the setItemSpecialDeliveryStatusToRefill from the other slice, itemSlice, and use it.
         }
     }
 
