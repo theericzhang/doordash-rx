@@ -7,8 +7,6 @@ type TPayloadActionSpecialDeliveryStatus = {
     itemID: number;
 };
 
-// TODO: Figure out how to type restaurantList properly
-// TODO: itemID is not avail on every restaurant, but used in cartSlice??
 const initialState = restaurantList;
 
 const restaurantsSlice = createSlice({
@@ -16,9 +14,7 @@ const restaurantsSlice = createSlice({
     initialState,
     reducers: {
         setItemSpecialDeliveryStatusToRefillRequested: (state, action: PayloadAction<TPayloadActionSpecialDeliveryStatus>) => {
-            // TODO: Grab the restaurant according to the passed PayloadAction, which would be the slug parameters in this case.
             const { pageViewingStoreID, itemID } = action.payload;
-
             state[Number(pageViewingStoreID) as keyof typeof restaurantList].storefrontData.items.itemsList[itemID].specialDeliveryStatus = 'refill-requested' as 'refill-requested';
         }
     }
