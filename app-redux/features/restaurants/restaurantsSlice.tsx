@@ -24,23 +24,3 @@ export const {
     setItemSpecialDeliveryStatusToRefillRequested
 } = restaurantsSlice.actions;
 export default restaurantsSlice.reducer;
-
-// function setSpecialDeliveryStatusToRefillRequested() {
-//     setRestaurantData!((state) => ({
-//         ...state,
-//         storefrontData: {
-//             ...state.storefrontData,
-//             items: {
-//                 ...state.storefrontData.items,
-//                 itemsList: [
-//                     ...state.storefrontData.items.itemsList.slice(0, itemID),
-//                     {
-//                         ...state.storefrontData.items.itemsList[itemID],
-//                         specialDeliveryStatus: 'refill-requested'
-//                     },
-//                     ...state.storefrontData.items.itemsList.slice(itemID + 1),
-//                 ]
-//             }
-//         }
-//     }));
-// }
