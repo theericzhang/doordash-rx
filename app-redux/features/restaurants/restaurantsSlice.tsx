@@ -18,7 +18,7 @@ const restaurantsSlice = createSlice({
         setItemSpecialDeliveryStatusToRefillRequested: (state, action: PayloadAction<TPayloadActionSpecialDeliveryStatus>) => {
             // TODO: Grab the restaurant according to the passed PayloadAction, which would be the slug parameters in this case.
             const { pageViewingStoreID, itemID } = action.payload;
-            console.log(state[Number(pageViewingStoreID) as keyof typeof restaurantList]);
+
             state[Number(pageViewingStoreID) as keyof typeof restaurantList].storefrontData.items.itemsList[itemID].specialDeliveryStatus = 'refill-requested' as 'refill-requested';
         }
     }

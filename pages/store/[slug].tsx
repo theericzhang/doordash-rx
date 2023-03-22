@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { createContext } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { restaurantList } from '../../components/datav2';
 import {
     TRestaurantDataPrimary, TStorefrontData
@@ -27,9 +27,20 @@ type TRestaurantContext = {
 export const RestaurantContext = createContext<TRestaurantContext | null>(null);
 
 export default function Store({ storeID }: TServerSideProps) {
+    // Set the storeID once the page mounts
     const dispatch = useAppDispatch();
     dispatch(setPageViewingStoreID(Number(storeID)));
+
+    // grab the restaurant/store's data from global redux store, create a state variable and set it to the data
+    // Cannot pass restaurant directly as context since context will not trigger a re-render if it is updated, as per design
     const restaurant = useAppSelector((state) => state.restaurantSlice[Number(storeID) as keyof typeof restaurantList]);
+    const [restaurantState, setRestaurantState] = useState(restaurant);
+
+    // update restaurantState if the value of restaurant changes. expect restaurant to change when specialDeliveryStatus updates
+    useEffect(() => {
+        setRestaurantState(restaurant);
+    }, [restaurant]);
+
     return (
         <>
             <Head>
@@ -51,7 +62,7 @@ export default function Store({ storeID }: TServerSideProps) {
                 />
                 {/* Insert Rest of the Store's components */}
                 {/* <StoreItemsContext.Provider value={restaurant.storefrontData.items}> */}
-                <RestaurantContext.Provider value={restaurant}>
+                <RestaurantContext.Provider value={restaurantState}>
                     <QuickActions />
                 </RestaurantContext.Provider>
                 <CartOverview isInCartSheet={false} />
