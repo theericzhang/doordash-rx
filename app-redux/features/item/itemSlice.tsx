@@ -24,7 +24,7 @@ const itemSlice = createSlice({
         setModalData: (state, action: PayloadAction<TStoreItem>) => {
             state.itemData = action.payload;
         },
-        setItemSpecialDeliveryStatusToRefillRequested: (state) => {
+        setItemSpecialDeliveryStatusToRefillRequestedCustomization: (state) => {
             // Dispatch a request
             state.itemData.specialDeliveryStatus = 'refill-requested';
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -34,6 +34,6 @@ const itemSlice = createSlice({
 });
 
 export const {
-    toggleIsModalOpen, setIsModalOpenFalse, setModalData, setItemSpecialDeliveryStatusToRefillRequested
+    toggleIsModalOpen, setIsModalOpenFalse, setModalData, setItemSpecialDeliveryStatusToRefillRequestedCustomization
 } = itemSlice.actions;
 export default itemSlice.reducer;

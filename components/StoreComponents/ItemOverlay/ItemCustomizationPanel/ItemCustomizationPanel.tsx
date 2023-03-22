@@ -9,7 +9,7 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 import Image from 'next/image';
 import Shimmer from '../../../Placeholders/Shimmer';
 import { useAppDispatch, useAppSelector } from '../../../../app-redux/hooks';
-import { toggleIsModalOpen } from '../../../../app-redux/features/item/itemSlice';
+import { toggleIsModalOpen, setItemSpecialDeliveryStatusToRefillRequestedCustomization } from '../../../../app-redux/features/item/itemSlice';
 import {
     addItemToCart,
     setStoreID,
@@ -280,6 +280,7 @@ export default function ItemCustomizationPanel({ state, isModalOpen }: TItemCust
                     itemID: itemData.itemID,
                 }
             ));
+            dispatch(setItemSpecialDeliveryStatusToRefillRequestedCustomization());
             // TODO: Pull in the setItemSpecialDeliveryStatusToRefill from the other slice, itemSlice, and use it.
         }
     }
