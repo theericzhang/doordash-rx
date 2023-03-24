@@ -9,6 +9,17 @@ const FooterInsuranceInfoWrapper = styled.div`
     column-gap: 16px;
 
     @media screen and (max-width: 771px) {
+        align-items: flex-start;
+        row-gap: 5px;
+        flex-direction: column;
+    }
+`;
+
+const FooterInsuranceMemberAndInfoIconWrapper = styled.div`
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+    @media screen and (max-width: 771px) {
         column-gap: 5px;
     }
 `;
@@ -40,13 +51,15 @@ export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsura
         <FooterInsuranceInfoWrapper>
             {/* //TODO: aetna case is widely hardcoded in - in the future, we will need to consider cases for all insurance providers */}
             {insurer === 'aetna' ? <Aetna /> : null}
-            <FooterInsuranceInfoSpan>
-                Member #
-                {' '}
-                {' '}
-                {concealedMemberID}
-            </FooterInsuranceInfoSpan>
-            <Information />
+            <FooterInsuranceMemberAndInfoIconWrapper>
+                <FooterInsuranceInfoSpan>
+                    Member #
+                    {' '}
+                    {' '}
+                    {concealedMemberID}
+                </FooterInsuranceInfoSpan>
+                <Information />
+            </FooterInsuranceMemberAndInfoIconWrapper>
         </FooterInsuranceInfoWrapper>
     );
 }
