@@ -6,6 +6,9 @@ const FooterTextReminderWrapper = styled.div`
     align-items: flex-start;
     column-gap: 8px;
     max-width: 282px;
+    @media screen and (max-width: 770px) {
+        max-width: 260px;
+    }
 `;
 
 const InformationIconWrapper = styled.div`
