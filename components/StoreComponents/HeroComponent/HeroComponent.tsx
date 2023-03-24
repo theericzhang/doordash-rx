@@ -125,9 +125,9 @@ const HeroComponentInformationSpan = styled.span`
     column-gap: 6px;
     font-size: 14px;
     align-items: center;
+    flex-wrap: wrap;
 
     @media screen and (max-width: 480px) {
-        flex-wrap: wrap;
         width: 70%;
     }
 `;
