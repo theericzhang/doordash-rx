@@ -7,6 +7,10 @@ const FooterInsuranceInfoWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     column-gap: 16px;
+
+    @media screen and (max-width: 771px) {
+        column-gap: 5px;
+    }
 `;
 
 const FooterInsuranceInfoSpan = styled.span`
