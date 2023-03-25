@@ -149,7 +149,7 @@ const ItemCustomizationPanelFooter = styled.div<{ specialDeliveryStatus?: 'refil
 
     @media screen and (max-width: 480px) {
         column-gap: 0;
-        justify-content: center;
+        justify-content: ${(props) => (props?.specialDeliveryStatus ? 'space-between' : 'flex-end')};
     }
 `;
 

@@ -23,11 +23,24 @@ const LinkedAccountStoreProfileImage = styled(Image)`
     object-fit: cover;
 `;
 
+const LinkedAccountUserAccount = styled.div`
+    display: flex;
+    column-gap: 12px;
+    align-items: center;
+
+    @media screen and (max-width: 480px) {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 5px;
+    }
+`;
+
 const LinkedAccountLabel = styled.span`
     font-size: 14px;
     color: var(--secondary-black);
     display: flex;
     column-gap: 6px;
+    align-items: center;
 `;
 
 const LinkedAccountLabelBolden = styled.span`
@@ -60,15 +73,17 @@ export default function LinkedAccount({ storeProfileSrc, storeProfileAlt }: TLin
                     sizes="(max-width: 960px) 76px, 76px"
                 />
             </LinkedAccountStoreProfileWrapper>
-            <LinkedAccountLabel>
-                Linked account:
-                <LinkedAccountLabelBolden>
-                    JaneSmith@mail.com
-                </LinkedAccountLabelBolden>
-            </LinkedAccountLabel>
-            <LinkedAccountManageLink href="/">
-                Manage
-            </LinkedAccountManageLink>
+            <LinkedAccountUserAccount>
+                <LinkedAccountLabel>
+                    Linked account:
+                    <LinkedAccountLabelBolden>
+                        JaneSmith@mail.com
+                    </LinkedAccountLabelBolden>
+                </LinkedAccountLabel>
+                <LinkedAccountManageLink href="/">
+                    Manage
+                </LinkedAccountManageLink>
+            </LinkedAccountUserAccount>
         </LinkedAccountWrapper>
     );
 }
