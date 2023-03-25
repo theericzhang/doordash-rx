@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
 import Information from '../../../../../Icons/InformationIcon';
 import Aetna from '../../../../../Icons/InsuranceLogos/Aetna';
@@ -36,16 +37,30 @@ type TFooterInsuranceInfo = {
 };
 
 export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsuranceInfo) {
-    const stringOfMemberID = memberID?.toString();
+    const stringOfMemberID = memberID!.toString();
 
-    let concealedMemberID: string = '';
-    for (let i = 0; i < stringOfMemberID!.length; i++) {
-        if (i < stringOfMemberID!.length - 3) {
-            concealedMemberID += '*';
-        } else {
-            concealedMemberID += stringOfMemberID![i];
+    // let concealedMemberID: string = '';
+    // for (let i = 0; i < stringOfMemberID!.length; i++) {
+    //     if (i < stringOfMemberID!.length - 3) {
+    //         concealedMemberID += '*';
+    //     } else {
+    //         concealedMemberID += stringOfMemberID![i];
+    //     }
+    // }
+
+    function concealMemberID(stringOfMemberIDArg: string): string {
+        let tempMemberID: string = '';
+        for (let i = 0; i < stringOfMemberIDArg!.length; i++) {
+            if (i < stringOfMemberIDArg!.length - 3) {
+                tempMemberID += '*';
+            } else {
+                tempMemberID += stringOfMemberIDArg![i];
+            }
         }
+        return tempMemberID;
     }
+
+    const concealedMemberID = useMemo(() => concealMemberID(stringOfMemberID), [stringOfMemberID]);
 
     return (
         <FooterInsuranceInfoWrapper>
