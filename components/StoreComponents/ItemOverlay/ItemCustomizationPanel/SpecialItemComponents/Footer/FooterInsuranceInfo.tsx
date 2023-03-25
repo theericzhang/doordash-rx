@@ -50,7 +50,7 @@ export default function FooterInsuranceInfo({ insurer, memberID }: TFooterInsura
 
     function concealMemberID(stringOfMemberIDArg: string): string {
         let tempMemberID: string = '';
-        for (let i = 0; i < stringOfMemberIDArg!.length; i++) {
+        for (let i = 3; i < stringOfMemberIDArg!.length; i++) {
             if (i < stringOfMemberIDArg!.length - 3) {
                 tempMemberID += '*';
             } else {
